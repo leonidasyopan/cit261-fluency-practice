@@ -1,0 +1,30 @@
+/*  
+// MOBILE FIRST APPROACH - GENERAL STYLE FIRST
+*/
+
+/* MAIN STYLESHEET */
+
+/* Resetting all attributes of the box sizing */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+/*  
+// MEDIUM SCREENS - MEDIA QUERY BREAK
+*/
+@media (min-width:600px) {
+
+}
+
+/*  
+// BIG SCREENS - MEDIA QUERY BREAK
+*/
+@media (min-width:1025px) {
+
+}
