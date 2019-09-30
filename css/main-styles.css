@@ -13,8 +13,11 @@
     box-sizing: border-box;
 }
 
-body {    
-    background: url('../img/bg/background-night-city.jpg');
+body {
+    /* 
+    Image credits: https://www.pexels.com/photo/high-rise-buildings-during-night-time-photo-219692/
+    */    
+    background: url('../img/bg/background-arcade-blur.jpg');
     background-color: rgba(248, 247, 216, 0.7);
     background-position: center; 
     background-repeat: no-repeat; 
