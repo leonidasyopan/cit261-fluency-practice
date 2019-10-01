@@ -74,6 +74,19 @@ footer {
     margin: 0 auto;
 }
 
+.return-button {
+    background-color: #323334;
+    color: #ffffff;
+    width: 150px;
+    padding: 10px;
+    position: fixed;
+    right: 15vw;
+    top: 0;    
+    z-index: 9999;
+    cursor: pointer;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
 
 /*  
 // MEDIUM SCREENS - MEDIA QUERY BREAK
