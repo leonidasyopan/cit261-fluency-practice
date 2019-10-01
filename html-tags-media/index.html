@@ -7,7 +7,7 @@
     <title>HTML5 Tags - Video, Audio, and Canvas</title>
 
     <link rel="stylesheet" href="../css/basic-styles.css">
-    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="../css/podcasts-styles.css">
 </head>
 <body>
     <header>
@@ -15,7 +15,89 @@
     </header>
     <main>
         <div class="content-width">
+
+
+            <canvas>Unfortunately, your browser still does not support this feature. You might want to think about updating it.</canvas>
             <h1>Yopan's Awesome Podcasts</h1>
+
+            <!-- All the audio files are free stock files from the following website: -->
+            <!-- https://www.freesoundeffects.com/free-sounds/lion-10048/ -->
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Date Recorded</th>
+                        <th>Listen</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Talking to Lions</td>
+                        <td>Fictiousary 5th, 2032</td>
+                        <td>
+                            <audio autoplay="autoplay" controls="controls">
+                                <source src="../audio/talking-to-lions.mp3" type="audio/mp3" />
+                                Unfortunately, your browser still does not support this feature. You might want to think about updating it.
+                            </audio>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Talking to Monkeys</td>
+                        <td>Fictiousary 10th, 2032</td>
+                        <td>
+                            <audio autoplay="autoplay" controls="controls">
+                                <source src="../audio/talking-to-monkeys.mp3" type="audio/mp3" />
+                                Unfortunately, your browser still does not support this feature. You might want to think about updating it.
+                            </audio>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Talking to Coyotes</td>
+                        <td>Fictiousary 15th, 2032</td>
+                        <td>
+                            <audio autoplay="autoplay" controls="controls">
+                                <source src="../audio/talking-to-coyotes.mp3" type="audio/mp3" />
+                                Unfortunately, your browser still does not support this feature. You might want to think about updating it.
+                            </audio>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Talking to Bats</td>
+                        <td>Fictiousary 20th, 2032</td>
+                        <td>
+                            <audio autoplay="autoplay" controls="controls">
+                                <source src="../audio/talking-to-bats.mp3" type="audio/mp3" />
+                                Unfortunately, your browser still does not support this feature. You might want to think about updating it.
+                            </audio>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Talking to Pigs</td>
+                        <td>Fictiousary 30th, 2032</td>
+                        <td>
+                            <audio autoplay="autoplay" controls="controls">
+                                <source src="../audio/talking-to-pigs.mp3" type="audio/mp3" />
+                                Unfortunately, your browser still does not support this feature. You might want to think about updating it.
+                            </audio>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <canvas></canvas>
+            <h2>Or you might want to chat with the king himself:</h2>
+
+            <!-- Video is posted as free stock video at YouTube: -->
+            <!-- https://www.youtube.com/watch?v=MysZ1GHFauQ -->
+            <video controls>
+                <source src="../video/lion-the-king.mp4" type="video/mp4">
+                Unfortunately, your browser still does not support this feature. You might want to think about updating it.
+            </video>
+
+            
+
+
         </div>
     </main>
     <footer>
@@ -23,5 +105,7 @@
             <p>&copy; Copyright 2019 Leonidas Yopan | All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script src="../js/canvas-width.js"></script>
 </body>
 </html>
