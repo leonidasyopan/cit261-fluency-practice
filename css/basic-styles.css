@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,400&display=swap');
+/*  
+// MOBILE FIRST APPROACH - GENERAL STYLE FIRST
+*/
+
+/* MAIN STYLESHEET */
+
+/* Color Scheme Chosen Through Adobe Color */
+/* https://color.adobe.com/pt/C%C3%B3pia-de-Flat-UI-color-theme-9883687 */
+/* Color Theme Swatches in Hex */
+.Cópia-de-Flat-UI-1-hex { color: #2C3E50; }
+.Cópia-de-Flat-UI-2-hex { color: #E74C3C; }
+.Cópia-de-Flat-UI-3-hex { color: #ECF0F1; }
+.Cópia-de-Flat-UI-4-hex { color: #3498DB; }
+.Cópia-de-Flat-UI-5-hex { color: #2980B9; }
+
+/* Color Theme Swatches in RGBA */
+.Cópia-de-Flat-UI-1-rgba { color: rgba(43, 61, 80, 1); }
+.Cópia-de-Flat-UI-2-rgba { color: rgba(230, 75, 59, 1); }
+.Cópia-de-Flat-UI-3-rgba { color: rgba(235, 239, 240, 1); }
+.Cópia-de-Flat-UI-4-rgba { color: rgba(52, 151, 219, 1); }
+.Cópia-de-Flat-UI-5-rgba { color: rgba(40, 128, 184, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Cópia-de-Flat-UI-1-hsla { color: hsla(210, 29, 24, 1); }
+.Cópia-de-Flat-UI-2-hsla { color: hsla(5, 78, 57, 1); }
+.Cópia-de-Flat-UI-3-hsla { color: hsla(192, 15, 93, 1); }
+.Cópia-de-Flat-UI-4-hsla { color: hsla(204, 69, 53, 1); }
+.Cópia-de-Flat-UI-5-hsla { color: hsla(203, 63, 44, 1); }
+
+
+/* Resetting all attributes of the box sizing */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(../img/bg-pattern/crossword.png);
+    background-color: #ECF0F1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Raleway', sans-serif;
+}
+
+header {
+    background-color: #3498DB;
+    padding: 10px;
+}
+
+main {
+    min-height: 80vh;
+    margin: 40px 0;
+}
+
+footer {
+    background-color: #2980B9;    
+    color: #ffffff;    
+    padding: 20px;
+    text-align: center;
+}
+
+.disclaimer {
+    font-size: smaller;
+    color: #ffffff;
+    text-align: center;
+}
+
+.content-width {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+
+/*  
+// MEDIUM SCREENS - MEDIA QUERY BREAK
+*/
+@media (min-width:600px) {
+
+}
+
+/*  
+// BIG SCREENS - MEDIA QUERY BREAK
+*/
+@media (min-width:1025px) {
+
+}
