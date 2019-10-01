@@ -81,11 +81,15 @@ footer {
     padding: 10px;
     position: fixed;
     right: 15vw;
-    top: 0;    
+    top: 0;  
     z-index: 9999;
     cursor: pointer;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+.return-button:hover {
+    color: rgb(255, 255, 218);
 }
 
 /*  
