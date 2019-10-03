@@ -1,0 +1,19 @@
+{
+    "projects": [
+        {
+            "name": "Calculator",
+            "description": "Create a simple calculation application.",
+            "status": "Not started"
+        },
+        {
+            "name": "Task Manager",
+            "description": "Create an app to add taks and remove when completed.",
+            "status": "Not started"
+        },
+        {
+            "name": "Weather Application",
+            "description": "Create an app that picks user locations and displayes weather.",
+            "status": "Not started"
+        }
+    ]
+}
