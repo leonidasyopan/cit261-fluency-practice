@@ -10,6 +10,10 @@ select {
     font-size: 1.2em;
 }
 
+main {
+    padding: 5px;
+}
+
 /* Styling for the table */
 table { 
     width: 100%;
@@ -44,4 +48,22 @@ table tbody tr td:nth-of-type(2) {
 
 table tbody tr td:nth-of-type(3) {
     width: 20%;
+}
+
+/*  
+// MEDIUM SCREENS - MEDIA QUERY BREAK
+*/
+@media (min-width:600px) {
+    main {
+        padding: 10px;
+    }
+}
+
+/*  
+// BIG SCREENS - MEDIA QUERY BREAK
+*/
+@media (min-width:1025px) {
+    main {
+        padding: 0;
+    }
 }
