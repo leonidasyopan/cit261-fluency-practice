@@ -61,7 +61,7 @@ function getGamesInfo(i){
             output += '<div id="game-data">';
             output += "<p><strong>Year Published:</strong> " + games[i].year_published + "</p>";
             output += "<p><strong>Number of Players:</strong> " + games[i].min_players + " to " + games[i].max_players + "</p>";
-            output += "<p><strong>Play Time:</strong> " + games[i].min_playtime + " to " + games[i].max_playtime + "</p>";
+            output += "<p><strong>Play Time:</strong> " + games[i].min_playtime + " to " + games[i].max_playtime + " minutes</p>";
             output += "<p><strong>Recommended Age:</strong> " + games[i].min_age + "</p>";
             output += "<p><strong>Price:</strong> " + games[i].price + "</p>";
             output += '</div>';
