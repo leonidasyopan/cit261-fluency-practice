@@ -1,91 +1,93 @@
 /* Quiz Builder Application */
 var quiz = {
+    /* This is the method responsible for building the list of questions */ 
     buildQuiz : function () {
 
-    var form = document.getElementById("quiz-form");
+        var form = document.getElementById("quiz-form");
 
-    /* Build the DIV element that holds each question with its options */
-    for (var list in quizQuestions) {
-    var number = parseInt(index) + 1; // The current question number
-    var qwrap = document.createElement("div"); // A div wrapper to hold this question and options
-    qwrap.classList.add("question"); // CSS class, for cosmetics
+        /* Build the DIV element that holds each question with its options */
+        for (var index in quizQuestions) {
+            var number = parseInt(index) + 1; // This creates the question number
+            var questionDiv = document.createElement("div"); 
+            questionDiv.classList.add("question-div"); 
 
-    // The question - <h1> header
-    var question = document.createElement("h2");
-    question.innerHTML = number + ") " + quizQuestions[index]['question'];
-    qwrap.appendChild(question);
+            /* The question itself will be in a H2 element */
+            var question = document.createElement("h2");
+            question.innerHTML = number + ") " + quizQuestions[index]['question'];
+            questionDiv.appendChild(question);
 
-    // The options - <input> radio buttons and <label>
-    for (var oindex in quizQuestions[index]['options']) {
-        // The <label> tag
-        var label = document.createElement("label");
-        qwrap.appendChild(label);
+            /* The options are going to be put in input radios */
+            for (var optionIndex in quizQuestions[index]['options']) {
+                
+                var label = document.createElement("label");
+                questionDiv.appendChild(label);
+                
+                var option = document.createElement("input");
+                option.type = "radio";
+                option.value = optionIndex;
+                option.required = true;
+                option.classList.add("quiz-option"); 
+                
+                option.name = "quiz-" + number;
+                label.appendChild(option);
+                
+                /* Lists all the options for the previouly built question */
+                var optionRadio = document.createTextNode(quizQuestions[index]['options'][optionIndex]);
+                label.appendChild(optionRadio);
+            }            
 
-        // The <option> tag
-        var option = document.createElement("input");
-        option.type = "radio";
-        option.value = oindex;
-        option.required = true;
-        option.classList.add("oquiz"); // Will explain this later in function submit below
+            /* Added an illustrative image to each question */
+            var image = document.createElement("img");            
+            image.src = quizQuestions[index]['imgSRC'];
+            image.classList.add("question-image");
+            questionDiv.appendChild(image);
 
-        // Remember that a radio button group must share the same name
-        option.name = "quiz-" + number;
-        label.appendChild(option);
+            form.appendChild(questionDiv);
+            
 
-        // Add the option text
-        var otext = document.createTextNode(quizQuestions[index]['options'][oindex]);
-        label.appendChild(otext);
+        }
+
+        /* This is the submit button responsible for activating the evaluation function/method */
+        var submitButton = document.createElement("input");
+        submitButton.type = "submit";
+        form.appendChild(submitButton);
+        form.addEventListener("submit", quiz.submit);
+    },
+
+    /* This is the method responsible for evatuating the answers of the user */
+    submit : function (evaluate) {    
+
+        // Stops the form from submitting
+        evaluate.preventDefault();
+        evaluate.stopPropagation();
+        
+        var chosenOption = document.querySelectorAll(".quiz-option:checked");
+
+        /* Computes the number of correct answers */
+        var correctAnswer = 0;
+        for (var index in quizQuestions) {
+            if (chosenOption[index].value == quizQuestions[index]['answer']) {
+                correctAnswer++;
+            }
+        }
+        
+        var total = chosenOption.length;
+        var percent = correctAnswer / total ;
+
+        /* Displays the score of the Answers provided by the user */
+        var html = "<h2>";
+        if (percent>=0.7) {
+            html += "Congratulations! You know your Casablanca stuff!";
+        } else if (percent>=0.4) {
+            html += "At least you've seen the characters, right?!";
+        } else {
+            html += "Have you ever really watched the movie?";
+        }
+        html += "</h3>";
+        html += "<div>You got " + correctAnswer + " question out of" + total + " correct.</div>";
+        document.getElementById("quiz-form").innerHTML = html;
     }
-
-    // Finally, add this question to the main HTML quiz wrapper
-    form.appendChild(qwrap);
-    }
-
-    // Attach submit button + event handler to the quiz wrapper
-    var submitbutton = document.createElement("input");
-    submitbutton.type = "submit";
-    form.appendChild(submitbutton);
-    form.addEventListener("submit", quiz.submit);
-},
-
-submit : function (evt) {
-// quiz.submit() : Handle the calculations when the user submits to quiz
-
-    // Stop the form from submitting
-    evt.preventDefault();
-    evt.stopPropagation();
-
-    // Remember that we added an "oquiz" class to all the options?
-    // We can easily get all the selected options this way
-    var selected = document.querySelectorAll(".oquiz:checked");
-
-    // Get the score
-    var score = 0;
-    for (var index in quizQuestions) {
-    if (selected[index].value == quizQuestions[index]['answer']) {
-        score++;
-    }
-    }
-
-    // We can calculate the score now
-    var total = selected.length;
-    var percent = score / total ;
-
-    // Update and show the score
-    // Instead of creating elements, we can also directly alter the inner HTML
-    var html = "<h1>";
-    if (percent>=0.7) {
-    html += "WELL DONE!";
-    } else if (percent>=0.4) {
-    html += "NOT BAD!";
-    } else {
-    html += "TRY HARDER!";
-    }
-    html += "</h1>";
-    html += "<div>You scored " + score + " out of " + total + ".</div>";
-    document.getElementById("quiz-form").innerHTML = html;
-}
 };
 
-/* [INIT] */
+/* Calls the method to build the quiz on screen */
 window.addEventListener("load", quiz.buildQuiz);
