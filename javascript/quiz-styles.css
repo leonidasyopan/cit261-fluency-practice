@@ -1,5 +1,5 @@
-h2 {
-    margin-top: 3em;
+main {
+    padding: 0 20px;
 }
 
 label {
@@ -8,3 +8,50 @@ label {
     font-size: 20px;
     margin-top: 10px;
 }
+
+img {
+    display: block;
+    margin: 20px auto 0 auto;
+    max-width: 300px;
+    height: auto;    
+}
+
+input[type=radio] {
+    margin-right: 20px;
+    
+}
+
+a {
+    text-decoration: none;
+}
+
+input[type=submit], .tryAgain {
+    background-color: rgb(252, 63, 63);
+    margin-top: 2em;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-size: 1.3em;
+    color: #ffffff;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.question-div {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(148, 196, 228, 0.205);
+    border: 3px solid #0D476E;
+    border-radius: 10px;
+}
+
+.resultHeader {
+    margin: 20px 0;
+    color: #ff2626;
+}
+
+.numberOfCorrect {
+    font-size: 1.5em;
+}
+

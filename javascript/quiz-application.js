@@ -75,7 +75,7 @@ var quiz = {
         var percent = correctAnswer / total ;
 
         /* Displays the score of the Answers provided by the user */
-        var html = "<h2>";
+        var html = '<h2 class="resultHeader">';
         if (percent>=0.7) {
             html += "Congratulations! You know your Casablanca stuff!";
         } else if (percent>=0.4) {
@@ -84,8 +84,11 @@ var quiz = {
             html += "Have you ever really watched the movie?";
         }
         html += "</h3>";
-        html += "<div>You got " + correctAnswer + " question out of" + total + " correct.</div>";
+        html += '<div class="numberOfCorrect"><p>You got ' + correctAnswer + ' question out of ' + total + ' correct.</p></div>';
+        html += '<a href="http://cit261.leonidasyopan.com/javascript/"><button class="tryAgain">Try Again</button></a>';
+
         document.getElementById("quiz-form").innerHTML = html;
+        
     }
 };
 
