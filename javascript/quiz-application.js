@@ -85,7 +85,7 @@ var quiz = {
         }
         html += "</h3>";
         html += '<div class="numberOfCorrect"><p>You got ' + correctAnswer + ' question out of ' + total + ' correct.</p></div>';
-        html += '<a href="http://cit261.leonidasyopan.com/javascript/"><button class="tryAgain">Try Again</button></a>';
+        html += '<button class="tryAgain"><a href="http://cit261.leonidasyopan.com/javascript/">Try Again</a></button>';
 
         document.getElementById("quiz-form").innerHTML = html;
         
