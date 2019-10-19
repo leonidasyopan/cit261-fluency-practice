@@ -1,23 +1,22 @@
-/* Quiz Application */
-let quizApplication = {
+/* Quiz Builder Application */
+var quiz = {
     buildQuiz : function () {
-    
-    let wrapper = document.getElementById("quiz-form");
 
-    // Loop through all the questions
-    // Create all the necessary HTML elements
-    for (var index in questions) {
+    var form = document.getElementById("quiz-form");
+
+    /* Build the DIV element that holds each question with its options */
+    for (var list in quizQuestions) {
     var number = parseInt(index) + 1; // The current question number
     var qwrap = document.createElement("div"); // A div wrapper to hold this question and options
     qwrap.classList.add("question"); // CSS class, for cosmetics
 
     // The question - <h1> header
-    var question = document.createElement("h1");
-    question.innerHTML = number + ") " + questions[index]['q'];
+    var question = document.createElement("h2");
+    question.innerHTML = number + ") " + quizQuestions[index]['question'];
     qwrap.appendChild(question);
 
     // The options - <input> radio buttons and <label>
-    for (var oindex in questions[index]['o']) {
+    for (var oindex in quizQuestions[index]['options']) {
         // The <label> tag
         var label = document.createElement("label");
         qwrap.appendChild(label);
@@ -34,19 +33,19 @@ let quizApplication = {
         label.appendChild(option);
 
         // Add the option text
-        var otext = document.createTextNode(questions[index]['o'][oindex]);
+        var otext = document.createTextNode(quizQuestions[index]['options'][oindex]);
         label.appendChild(otext);
     }
 
     // Finally, add this question to the main HTML quiz wrapper
-    wrapper.appendChild(qwrap);
+    form.appendChild(qwrap);
     }
 
     // Attach submit button + event handler to the quiz wrapper
     var submitbutton = document.createElement("input");
     submitbutton.type = "submit";
-    wrapper.appendChild(submitbutton);
-    wrapper.addEventListener("submit", quiz.submit);
+    form.appendChild(submitbutton);
+    form.addEventListener("submit", quiz.submit);
 },
 
 submit : function (evt) {
@@ -62,8 +61,8 @@ submit : function (evt) {
 
     // Get the score
     var score = 0;
-    for (var index in questions) {
-    if (selected[index].value == questions[index]['a']) {
+    for (var index in quizQuestions) {
+    if (selected[index].value == quizQuestions[index]['answer']) {
         score++;
     }
     }
@@ -84,10 +83,9 @@ submit : function (evt) {
     }
     html += "</h1>";
     html += "<div>You scored " + score + " out of " + total + ".</div>";
-    document.getElementById("quiz-wrap").innerHTML = html;
+    document.getElementById("quiz-form").innerHTML = html;
 }
 };
 
-
-/* Build the quiz on load of the page */
-window.addEventListener("load", quizApplication.buildQuiz);
+/* [INIT] */
+window.addEventListener("load", quiz.buildQuiz);

@@ -1,5 +1,5 @@
 /* Array holding the questions */
-var quiz = [
+var quizQuestions = [
     {
     question : "What did Rick have that everybody wanted?",
     options : [
