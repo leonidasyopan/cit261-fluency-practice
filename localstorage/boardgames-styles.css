@@ -1,0 +1,90 @@
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+img {
+    text-align: center;
+}
+
+#select-paragraph {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+}
+
+form {
+    margin: 5px 0 20px 0;
+}
+
+select {
+    display: block;
+    margin: 0 auto;
+    padding: 5px 15px;
+    border: 2px solid #3498DB;
+    border-radius: 5px;
+    width: 300px;
+    font-size: 1.2em;
+}
+
+main {
+    padding: 5px;
+}
+
+#game-name {
+    margin: 0 auto;    
+}
+
+#game-card #game-info h2 {
+    text-align: center;
+    font-size: 3em;
+}
+
+#game-card #game-info img {
+    padding: 20px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+#game-card #game-info p {
+    text-align: left;
+    font-size: 1.3em;
+    margin-bottom: 5px;
+}
+
+#game-information {
+    display: flex;
+}
+
+#game-data {
+    width: 30%;
+}
+
+#game-description {
+    margin-left: 10px;
+    width: 65%;
+}
+
+
+/*  
+// MEDIUM SCREENS - MEDIA QUERY BREAK
+*/
+@media (min-width:600px) {
+    main {
+        padding: 10px;
+    }
+}
+
+/*  
+// BIG SCREENS - MEDIA QUERY BREAK
+*/
+@media (min-width:1025px) {
+    main {
+        padding: 0;
+    }
+}
