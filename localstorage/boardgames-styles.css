@@ -10,7 +10,7 @@ img {
     text-align: center;
 }
 
-#select-paragraph {
+#select-paragraph, #delete-paragraph{
     font-size: 1.3em;
     font-weight: bold;
     margin-top: 15px;
@@ -70,6 +70,17 @@ main {
     width: 65%;
 }
 
+#deleted-successfully-message {    
+    text-align: center !important;
+}
+
+#name-game-green{
+    color: #3498DB;
+}
+
+#deleted-red {
+    color: #fa3a3a;
+}
 
 /*  
 // MEDIUM SCREENS - MEDIA QUERY BREAK
@@ -86,5 +97,18 @@ main {
 @media (min-width:1025px) {
     main {
         padding: 0;
+    }
+
+    #game-name {
+        display: flex;
+    }    
+
+    #choose-game-div {
+        width: 48%;
+    }
+
+    #delete-game-div {
+        margin-left: 10px;
+        width: 48%;
     }
 }
