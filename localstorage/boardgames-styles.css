@@ -57,19 +57,6 @@ main {
     margin-bottom: 5px;
 }
 
-#game-information {
-    display: flex;
-}
-
-#game-data {
-    width: 30%;
-}
-
-#game-description {
-    margin-left: 10px;
-    width: 65%;
-}
-
 #deleted-successfully-message {    
     text-align: center !important;
 }
@@ -110,5 +97,18 @@ main {
     #delete-game-div {
         margin-left: 10px;
         width: 48%;
+    }
+
+    #game-information {
+        display: flex;
+    }
+    
+    #game-data {
+        width: 30%;
+    }
+    
+    #game-description {
+        margin-left: 10px;
+        width: 65%;
     }
 }
