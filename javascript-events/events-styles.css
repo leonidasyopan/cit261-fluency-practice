@@ -1,0 +1,32 @@
+main {height: 2000px;}
+
+aside {
+    position: fixed;
+    top: 200px;
+}
+
+button.menu-button, .menu li a {
+    display: inline-block;;
+    background-color: rgba(52, 152, 219, 1);
+    text-decoration: none;
+    color: #ffffff;
+    padding: 15px 30px;
+    margin: 3px 0;
+    font-size: 1.2em;    
+}   
+
+.menu li a {
+    width: 300px;
+    padding: 10px 30px;
+    transition: ease-in;
+}
+
+button.menu-button {
+    width: 110px;
+    cursor: pointer;
+}
+
+button.menu-button:hover, .menu li a:hover {
+    background-color: rgba(50, 51, 52, 0.8);
+    transition: all 300ms ease-in-out;
+}
