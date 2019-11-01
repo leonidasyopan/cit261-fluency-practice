@@ -1,6 +1,5 @@
-aside {
-    position: fixed;
-    top: 200px;
+main {
+    padding: 10px;
 }
 
 button.menu-button, .menu li a {
@@ -27,4 +26,44 @@ button.menu-button {
 button.menu-button:hover, .menu li a:hover {
     background-color: rgba(50, 51, 52, 0.8);
     transition: all 300ms ease-in-out;
+}
+
+/* Video Event */
+
+#video-box {
+    max-width: 100%;
+    
+}
+
+#video-message {
+    margin-top: -5px;
+    background-color: rgba(50, 51, 52, 1);
+    color: #ffffff;
+    font-size: 1.3em;
+    text-align: center;
+    padding: 20px;
+}
+
+/*  
+// MEDIUM SCREENS - MEDIA QUERY BREAK
+*/
+@media (min-width:600px) {
+    main {
+        padding: 50px 200px;
+    }
+}
+
+/*  
+// BIG SCREENS - MEDIA QUERY BREAK
+*/
+@media (min-width:1025px) {
+
+    main {
+        padding: 50px;
+    }
+
+    aside {
+        position: fixed;
+        top: 200px;
+    }
 }

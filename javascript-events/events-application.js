@@ -49,25 +49,23 @@ const mediaEvents = document.querySelector("#event-media");
 
 function loadMediaEvents() {
     var output = "";
-    output += '<video id="video-box" width="320" height="240" controls onpause="pauseMessage()" onplay="playMessage()">';
+    output += '<video id="video-box" autoplay loop controls onpause="pauseMessage()" onplay="playMessage()">';
     output += '<source src="neymar-goal.mp4" type="video/mp4">';
     output += 'Your browser does not support the video tag.';
     output += '</video>';
-    output += '<p id="video-message"></p>'
+    output += '<div id="video-message">Play the video.</div>'
 
     eventsPlaceholder.innerHTML = output;
 }
 
-const videoMessage = document.querySelector("#video-message");
-
 function pauseMessage() {
-    var output =  "The video is paused.";
-    videoMessage.innerHTML = output;
+    var output =  "<p>The video is paused.</p>";
+    document.querySelector("#video-message").innerHTML = output;
 }
 
 function playMessage() {
-    var output =  "The video is palying.";
-    videoMessage.innerHTML = output;
+    var output =  "<p>The video is playing.</p>";
+    document.querySelector("#video-message").innerHTML = output;
 }
 
 mediaEvents.addEventListener("click", loadMediaEvents);
