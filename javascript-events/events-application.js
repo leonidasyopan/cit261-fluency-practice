@@ -5,7 +5,7 @@ const menuButton = document.querySelector(".menu-button");
 const menu = document.querySelector(".menu");
 let menuStatus = false;
 
-menu.style.marginLeft = "-300px";
+menu.style.marginLeft = "-280px";
 
 function stopDefAction(evt) {
     evt.preventDefault();
@@ -19,7 +19,7 @@ function menuToggle() {
         menu.style.transitionDuration = "500ms";
         menuStatus = true;
     } else {
-        menu.style.marginLeft = "-300px";
+        menu.style.marginLeft = "-280px";
         menuStatus = false;
     }
 }
@@ -36,12 +36,36 @@ const eventsPlaceholder = document.querySelector("#events-placeholder");
 const hoverEvents = document.querySelector("#event-hover");
 
 function loadHoverEvents() {
-    var output = "<p>Mouse Hovering events</p>";
+    var output = '';
+    output += '<p class="please-hover">Please, hover over the boxes to see the message.</p>'
+    output += '<div id="squares-container">';
+    output += '<div class ="colored-square" id="red-square"></div>'
+    output += '<div class ="colored-square" id="blue-square"></div>'
+    output += '<div class ="colored-square" id="green-square"></div>'
+    output += '<div class ="colored-square" id="purple-square"></div>'
+    output += '<div class ="colored-square" id="yellow-square"></div>'
+    output += '</div>'
+
     eventsPlaceholder.innerHTML = output;
 }
 
 hoverEvents.addEventListener("click", loadHoverEvents);
 hoverEvents.addEventListener("click", stopDefAction);
+
+const redSquare = document.querySelector("#red-square");
+const blueSquare = document.querySelector("#blue-square");
+const greenSquare = document.querySelector("#green-square");
+const purpleSquare = document.querySelector("#purple-square");
+const yellowSquare = document.querySelector("#yellow-square");
+
+
+function squareOut() {
+    redSquare.style.height = "500px";
+    redSquare.style.transitionProperty = "height";
+    redSquare.style.transitionDuration = "500ms";    
+}
+
+document.querySelector("#red-square").addEventListener("mouseover", squareOut);
 
 /* Media events */
 
