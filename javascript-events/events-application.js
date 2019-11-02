@@ -37,14 +37,15 @@ const hoverEvents = document.querySelector("#event-hover");
 
 function loadHoverEvents() {
     var output = '';
-    output += '<p class="please-hover">Please, hover over the boxes to see the message.</p>'
+    output += '<h2 class="please-hover">Please, hover over the boxes.</h2>';
+    output += '<h3 class="please-hover">Every time they will have different heights and take a different amount of time to transit.</h3>';
     output += '<div id="squares-container">';
-    output += '<div class ="colored-square" id="red-square"></div>'
-    output += '<div class ="colored-square" id="blue-square"></div>'
-    output += '<div class ="colored-square" id="green-square"></div>'
-    output += '<div class ="colored-square" id="purple-square"></div>'
-    output += '<div class ="colored-square" id="yellow-square"></div>'
-    output += '</div>'
+    output += '<div class ="colored-square" id="red-square" onmouseover="squareOut(this)" onmouseout="squareBack(this)"></div>';
+    output += '<div class ="colored-square" id="blue-square" onmouseover="squareOut(this)" onmouseout="squareBack(this)"></div>';
+    output += '<div class ="colored-square" id="green-square" onmouseover="squareOut(this)" onmouseout="squareBack(this)"></div>';
+    output += '<div class ="colored-square" id="purple-square" onmouseover="squareOut(this)" onmouseout="squareBack(this)"></div>';
+    output += '<div class ="colored-square" id="yellow-square" onmouseover="squareOut(this)" onmouseout="squareBack(this)"></div>';
+    output += '</div>';
 
     eventsPlaceholder.innerHTML = output;
 }
@@ -52,20 +53,20 @@ function loadHoverEvents() {
 hoverEvents.addEventListener("click", loadHoverEvents);
 hoverEvents.addEventListener("click", stopDefAction);
 
-const redSquare = document.querySelector("#red-square");
-const blueSquare = document.querySelector("#blue-square");
-const greenSquare = document.querySelector("#green-square");
-const purpleSquare = document.querySelector("#purple-square");
-const yellowSquare = document.querySelector("#yellow-square");
-
-
-function squareOut() {
-    redSquare.style.height = "500px";
-    redSquare.style.transitionProperty = "height";
-    redSquare.style.transitionDuration = "500ms";    
+function squareOut(x) {
+    var height = Math.floor(Math.random() * 500);
+    var time = Math.floor(Math.random() * 2000);
+    x.style.height = height + "px";
+    x.style.transitionProperty = "height";
+    x.style.transitionDuration = time + "ms";   
 }
 
-document.querySelector("#red-square").addEventListener("mouseover", squareOut);
+function squareBack(x) {
+    var time = Math.floor(Math.random() * 2000);
+    x.style.height = "50px";
+    x.style.transitionProperty = "height";
+    x.style.transitionDuration = time + "ms";
+}
 
 /* Media events */
 
