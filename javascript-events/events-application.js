@@ -37,8 +37,10 @@ const hoverEvents = document.querySelector("#event-hover");
 
 function loadHoverEvents() {
     var output = '';
-    output += '<h2 class="please-hover">Please, hover over the boxes.</h2>';
-    output += '<h3 class="please-hover">Every time they will have different heights and take a different amount of time to transit.</h3>';
+    output += '<h1 class="please-hover">Guess the Height Game</h1>';
+    output += '<h2 class="please-hover">Hover over the boxes in order.</h2>';
+    output += '<h4 class="please-hover">Every time they will have different heights and take a different amount of time to transit.</h4>';
+    output += '<h3 class="please-hover">Which colors will surpass the mark?</h3>';
     output += '<div id="squares-container">';
     output += '<div class ="colored-square" id="red-square" onmouseover="squareOut(this)" onmouseout="squareBack(this)"></div>';
     output += '<div class ="colored-square" id="blue-square" onmouseover="squareOut(this)" onmouseout="squareBack(this)"></div>';
@@ -46,6 +48,7 @@ function loadHoverEvents() {
     output += '<div class ="colored-square" id="purple-square" onmouseover="squareOut(this)" onmouseout="squareBack(this)"></div>';
     output += '<div class ="colored-square" id="yellow-square" onmouseover="squareOut(this)" onmouseout="squareBack(this)"></div>';
     output += '</div>';
+    output += '<hr class="dotted-line">';
 
     eventsPlaceholder.innerHTML = output;
 }

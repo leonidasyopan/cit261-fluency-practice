@@ -65,6 +65,13 @@ button.menu-button:hover, .menu li a:hover {
     background-color: #F1C40F;
 }
 
+hr {
+    z-index: 20;
+    position: absolute;
+    top: 500px;
+    border-top: 10px dashed red;
+}
+
 /* Video Event */
 
 #video-box {
