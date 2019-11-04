@@ -33,6 +33,7 @@ button.menu-button:hover, .menu li a:hover {
 #squares-container {
     display: flex;    
     justify-content: space-between;
+    height: 200px;
 }
 
 .colored-square {
@@ -67,8 +68,7 @@ button.menu-button:hover, .menu li a:hover {
 
 hr {
     z-index: 20;
-    position: absolute;
-    top: 500px;
+    position: relative;    
     border-top: 10px dashed red;
 }
 
