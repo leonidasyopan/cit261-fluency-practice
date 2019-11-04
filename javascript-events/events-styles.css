@@ -74,6 +74,11 @@ hr {
 
 /* Video Event */
 
+#video-section h2, #video-section h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
 #video-box {
     max-width: 100%;    
 }
@@ -96,8 +101,7 @@ hr {
     font-size: 2em;
 }
 
-#subscription-section form {
-    /* border: 2px solid rgba(52, 152, 219, 1); */
+#subscription-section form {    
     max-width: 500px;
     margin: 0 auto;
     background-color: rgba(52, 152, 219, .6);
@@ -146,6 +150,51 @@ hr {
     background-color: #E94432;
     border: 2px solid #ffffff;
     transition: all 300ms ease-in-out;
+}
+
+/* Focus and Blur Events */
+
+#keyboard-section {
+    text-align: center;
+}
+
+#keyboard-section h2 {
+    margin-bottom: 5px;
+    font-size: 1.8em;
+}
+
+#keyboard-section p {
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    font-style: italic;
+}
+
+#keyResult {
+    margin-top: 50px;
+    font-size: 1.3em;
+}
+
+#keyboard-section input {
+    margin-top: 20px;
+    width: 60px;
+    border: 2px solid rgba(52, 152, 219, 1);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#keyLook {
+    background: #333;
+    text-align: center;
+    color: #eee;    
+    border-radius: 0.3em;
+    margin: 0.2em;
+    padding: 1em;
+    width: 3.3em;
+    height: 100%;
+    box-sizing: border-box;       
+    border: 1px solid #444;
+    box-shadow: 0 0.2em 0 0.05em #222;
+    border-bottom-color: #555;
 }
 
 /*  

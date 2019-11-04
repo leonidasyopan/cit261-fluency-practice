@@ -77,11 +77,15 @@ const mediaEvents = document.querySelector("#event-media");
 
 function loadMediaEvents() {
     var output = "";
+    output += '<section id="video-section">';
+    output += '<h2>Analyze every detail of this Amazing Goal by Neymar.</h2>';
+    output += '<h3>Pause the game at your will.</h3>';
     output += '<video id="video-box" autoplay loop controls onpause="pauseMessage()" onplay="playMessage()">';
     output += '<source src="neymar-goal.mp4" type="video/mp4">';
     output += 'Your browser does not support the video tag.';
     output += '</video>';
     output += '<div id="video-message">Play the video.</div>'
+    output += '</section>';
 
     eventsPlaceholder.innerHTML = output;
 }
@@ -137,8 +141,24 @@ function formBlur(x) {
 const keyboardEvents = document.querySelector("#event-keyboard");
 
 function loadKeyboardEvents() {
-    var output = "<p>Keyboard events</p>";
+    var output = "";
+    output += '<section id="keyboard-section">';
+    output += '<h2>Application to Test Keyboard Keys</h2>';
+    output += "<p>Inside the box, press any key. If it's working we're going to tell you!</p>";
+    output += '<input type="text" size="40" onkeydown="whatKey(event)">';
+    output += '<div id="keyResult"></div>'
+    output += '</section>';
+    
     eventsPlaceholder.innerHTML = output;
+}
+
+function whatKey(evt) {
+    var x = evt.key;
+    document.getElementById("keyResult").innerHTML = 'Your ' + '<span id="keyLook">' + x + '</span> is working fine!';
+
+    if (evt.value >= 1) {
+        evt.value = "";
+    }
 }
 
 keyboardEvents.addEventListener("click", loadKeyboardEvents);
