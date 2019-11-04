@@ -105,13 +105,32 @@ mediaEvents.addEventListener("click", stopDefAction);
 const focusEvents = document.querySelector("#event-focus");
 
 function loadFocusEvents() {
-    var output = "<p>Focus and Blur events</p>";
+    var output = "";
+    output += '<section id="subscription-section">';
+    output += '<h2>Amazing News Website</h2>';
+    output += '<form action="" method="post" id="subscription-form">';
+    output += '<fieldset><legend>Subscribe to our news!</legend>';
+    output += '<label for="name">Name:</label>';
+    output += '<input id="name" type="text" name="name" onfocus="formFocus(this)" onblur="formBlur(this)">';
+    output += '<label for="email">E-mail:</label>';
+    output += '<input id="email" type="email" name="email" onfocus="formFocus(this)" onblur="formBlur(this)">';
+    output += '<input type="submit" value="Subscribe!">';
+    output += '</fieldset></form>';
+    output += '</section>';
+
     eventsPlaceholder.innerHTML = output;
 }
 
 focusEvents.addEventListener("click", loadFocusEvents);
 focusEvents.addEventListener("click", stopDefAction);
 
+function formFocus(x) {
+    x.style.backgroundColor = "#AEE8AE";  
+}
+
+function formBlur(x) {
+    x.style.backgroundColor = "";  
+}
 
 /* Keyboard events */
 
