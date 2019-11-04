@@ -46,32 +46,6 @@ button.menu-button:hover, .menu li a:hover {
     margin-bottom: 20px;
 }
 
-#red-square {
-    background-color: #E74C3C;
-}
-
-#blue-square {
-    background-color: #3498DB;
-}
-
-#green-square {
-    background-color: #2ECC71;
-}
-
-#purple-square {
-    background-color: #B07BC5;
-}
-
-#yellow-square {
-    background-color: #F1C40F;
-}
-
-hr {
-    z-index: 20;
-    position: relative;    
-    border-top: 10px dashed red;
-}
-
 /* Video Event */
 
 #video-section h2, #video-section h3 {

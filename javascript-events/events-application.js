@@ -48,9 +48,21 @@ function loadHoverEvents() {
     output += '<div class ="colored-square" id="purple-square" onmouseover="squareOut(this)" onmouseout="squareBack(this)"></div>';
     output += '<div class ="colored-square" id="yellow-square" onmouseover="squareOut(this)" onmouseout="squareBack(this)"></div>';
     output += '</div>';
-    output += '<hr class="dotted-line">';
+    output += '<hr id="dotted-line">';
 
     eventsPlaceholder.innerHTML = output;
+    
+    /* Set the CSS color of the boxes */
+    document.querySelector("#red-square").style.backgroundColor = '#E74C3C';
+    document.querySelector("#blue-square").style.backgroundColor = '#3498DB';
+    document.querySelector("#green-square").style.backgroundColor = '#2ECC71';
+    document.querySelector("#purple-square").style.backgroundColor = '#B07BC5';
+    document.querySelector("#yellow-square").style.backgroundColor = '#F1C40F';
+
+    /* Sets all CSS properties of the dotted line */ 
+    document.querySelector("#dotted-line").style.position = 'relative';
+    document.querySelector("#dotted-line").style.zIndex = '20';
+    document.querySelector("#dotted-line").style.borderTop = '10px dashed red';
 }
 
 hoverEvents.addEventListener("click", loadHoverEvents);
