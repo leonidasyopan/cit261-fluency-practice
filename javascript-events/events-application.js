@@ -40,7 +40,7 @@ function loadHoverEvents() {
     output += '<h1 class="please-hover">Guess the Height Game</h1>';
     output += '<h2 class="please-hover">Hover over the boxes in order.</h2>';
     output += '<h4 class="please-hover">Every time they will have different heights and take a different amount of time to transit.</h4>';
-    output += '<h3 class="please-hover">Which colors will surpass the mark?</h3>';
+    output += '<h3 class="please-hover">Which colors will surpass the mark? Which will be the tallest?</h3>';
     output += '<div id="squares-container">';
     output += '<div class ="colored-square" id="red-square" onmouseover="squareOut(this)" onmouseout="squareBack(this)"></div>';
     output += '<div class ="colored-square" id="blue-square" onmouseover="squareOut(this)" onmouseout="squareBack(this)"></div>';
@@ -50,8 +50,14 @@ function loadHoverEvents() {
     output += '</div>';
     output += '<hr id="dotted-line">';
 
-    eventsPlaceholder.innerHTML = output;
+    eventsPlaceholder.innerHTML = output;   
     
+    /* Set the general CSS properties of the boxes */
+    document.querySelector("#squares-container").style.display = 'flex';
+    document.querySelector("#squares-container").style.justifyContent = 'space-between';
+    document.querySelector("#squares-container").style.marginTop = '40px';
+    document.querySelector("#squares-container").style.height = '200px';
+
     /* Set the CSS color of the boxes */
     document.querySelector("#red-square").style.backgroundColor = '#E74C3C';
     document.querySelector("#blue-square").style.backgroundColor = '#3498DB';
@@ -73,7 +79,17 @@ function squareOut(x) {
     var time = Math.floor(Math.random() * 2000);
     x.style.height = height + "px";
     x.style.transitionProperty = "height";
-    x.style.transitionDuration = time + "ms";   
+    x.style.transitionDuration = time + "ms";
+    
+    /* Display height within the box */
+    x.innerHTML = height + "px";
+
+    /* Styles the text within the box */
+    x.style.textAlign = "center";
+    x.style.color = "#ffffff";
+    x.style.fontWeight = "bold";
+    x.style.padding = "10px";
+    x.style.fontSize = "1.5em";
 }
 
 function squareBack(x) {
