@@ -29,16 +29,7 @@ button.menu-button:hover, .menu li a:hover {
 }
 
 /* Hovering Events */
-
-.colored-square {
-    width: 15%;
-    height: 50px;
-}
-
-.please-hover {
-    text-align: center;
-    margin-bottom: 20px;
-}
+/* All made/controlled using JavaScript */
 
 /* Video Event */
 

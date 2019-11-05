@@ -51,6 +51,20 @@ function loadHoverEvents() {
     output += '<hr id="dotted-line">';
 
     eventsPlaceholder.innerHTML = output;   
+
+    /* Set general properties for the boxes */
+    const coloredBoxes = document.querySelectorAll(".colored-square");
+    coloredBoxes.forEach(div => {
+        div.style.width = "15%";
+        div.style.height = "50px";        
+    });
+
+    /* Center all the headings */
+    const pleaseHover = document.querySelectorAll(".please-hover");
+    pleaseHover.forEach(div => {
+        div.style.textAlign = "center";
+        div.style.marginBottom = "20px";      
+    });
     
     /* Set the general CSS properties of the boxes */
     document.querySelector("#squares-container").style.display = 'flex';
