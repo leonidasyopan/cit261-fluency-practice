@@ -2,8 +2,8 @@ main {
     padding: 10px;
 }
 
-button.menu-button, .menu li a {
-    display: inline-block;;
+button.menu-button, .menu div a {
+    display: block;;
     background-color: rgba(52, 152, 219, 1);
     text-decoration: none;
     color: #ffffff;
@@ -12,7 +12,7 @@ button.menu-button, .menu li a {
     font-size: 1.2em;    
 }   
 
-.menu li a {
+.menu div a {
     width: 300px;
     padding: 10px 30px;
     transition: ease-in;
@@ -23,7 +23,7 @@ button.menu-button {
     cursor: pointer;
 }
 
-button.menu-button:hover, .menu li a:hover {
+button.menu-button:hover, .menu div a:hover {
     background-color: rgba(50, 51, 52, 0.8);
     transition: all 300ms ease-in-out;
 }
@@ -109,6 +109,32 @@ button.menu-button:hover, .menu li a:hover {
     background-color: #E94432;
     border: 2px solid #ffffff;
     transition: all 300ms ease-in-out;
+}
+
+figure {
+    height: 300px;
+}
+
+#smiley {
+    display: block;
+    margin: 40px auto 0 auto;
+    width: 0%;
+    height: auto;    
+}
+
+.smiley-animation {
+    animation-name: popup;
+    animation-duration: 400ms;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes popup {
+    0%   {width: 0%;}    
+    80%  {width: 30%;}
+    90%  {width: 40%;}
+    100% {width: 30%;}
 }
 
 /* Focus and Blur Events */

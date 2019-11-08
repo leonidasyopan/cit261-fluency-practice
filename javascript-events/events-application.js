@@ -160,15 +160,24 @@ function loadFocusEvents() {
     output += '<input id="name" type="text" name="name" onfocus="formFocus(this)" onblur="formBlur(this)">';
     output += '<label for="email">E-mail:</label>';
     output += '<input id="email" type="email" name="email" onfocus="formFocus(this)" onblur="formBlur(this)">';
-    output += '<input type="submit" value="Subscribe!">';
+    output += '<input type="submit" value="Subscribe!" id="submit-button">';
     output += '</fieldset></form>';
     output += '</section>';
+    output += '<figure><img src="good-job-smiley.png" alt="Good Job Smiley" id="smiley"></figure>';
 
     eventsPlaceholder.innerHTML = output;
+
+    document.querySelector("#submit-button").addEventListener("click", stopDefAction);
+    document.querySelector("#submit-button").addEventListener("click", popUpSmiley);
 }
 
 focusEvents.addEventListener("click", loadFocusEvents);
 focusEvents.addEventListener("click", stopDefAction);
+
+function popUpSmiley() {
+    var smiley = document.getElementById("smiley");
+    smiley.classList.add("smiley-animation");
+}
 
 function formFocus(x) {
     x.style.backgroundColor = "#AEE8AE";  
