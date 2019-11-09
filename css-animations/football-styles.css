@@ -1,0 +1,100 @@
+#football-squad h1 {
+    text-align: center;
+    margin-bottom: 30px;    
+}
+
+footer {
+    margin-top: 200px;
+}
+
+/*
+// THIS IS THE DRAWING OF THE FIELD USING DIVs WITH BORDERS
+*/
+
+.field {
+    background-image: linear-gradient(to right, #67a059, #6da85e, #73af62, #7ab767, #80bf6c, #80bf6c, #80bf6c, #80bf6c, #7ab767, #73af62, #6da85e, #67a059);   width: 600px;
+    height: 800px;
+    margin: 0 auto;
+    padding: 5px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: -20;    
+}
+
+.border-line {
+    border: 5px solid #EFF7ED;
+    width: 550px;
+    height: 750px;
+    margin: 20px auto 0 auto;
+}
+
+.central-circle {
+    border: 5px solid #EFF7ED;
+    width: 140px;
+    height: 140px;
+    border-radius: 70px;
+    margin: 160px auto 0 auto;    
+}
+
+.midlle-line {
+    border-top: 5px solid #EFF7ED;
+    margin-top: -75px;
+}
+
+.home-big-box {
+    border-left: 5px solid #EFF7ED;
+    border-right: 5px solid #EFF7ED;
+    border-bottom: 5px solid #EFF7ED;
+    width: 200px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.home-small-box {
+    border-left: 5px solid #EFF7ED;
+    border-right: 5px solid #EFF7ED;
+    border-bottom: 5px solid #EFF7ED;
+    width: 100px;
+    height: 60px;
+    margin: -100px auto 0 auto;
+}
+
+.home-half-circle {
+    width: 70px;
+    height: 35px; 
+    margin: 35px auto 0 auto;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border: 5px solid #EFF7ED;
+    border-top: 0;
+}
+
+.away-big-box {
+    border-left: 5px solid #EFF7ED;
+    border-right: 5px solid #EFF7ED;
+    border-top: 5px solid #EFF7ED;
+    width: 200px;
+    height: 100px;
+    margin: 280px auto 0 auto;
+}
+
+.away-small-box {
+    border-left: 5px solid #EFF7ED;
+    border-right: 5px solid #EFF7ED;
+    border-top: 5px solid #EFF7ED;
+    width: 100px;
+    height: 60px;
+    margin: -60px auto 0 auto;
+}
+
+.away-half-circle {
+    width: 70px;
+    height: 35px; 
+    margin: -135px auto 0 auto;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border: 5px solid #EFF7ED;
+    border-bottom: 0;
+}
+
