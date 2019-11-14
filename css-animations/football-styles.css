@@ -107,6 +107,7 @@ footer {
 // These are the players styles
 */
 
+/*
 .player-card {
     position: relative;
     z-index: 20;    
@@ -119,6 +120,7 @@ footer {
     box-shadow: 0 10px 10px rgba(0, 0, 0, .5);    
 }
 
+
 .player-card img{
     display: block;
     margin: 0 auto;    
@@ -129,7 +131,7 @@ footer {
     overflow:hidden;
 }
 
-/* This trick is on hold */
+
 .player-card:hover {
     animation: danceAround 3s;
     animation-iteration-count: infinite;
@@ -146,9 +148,10 @@ footer {
     color: #fff;    
     font-size: smaller;
 }
+*/
 
 .players-left {
-    margin-left: -200px;
+    margin-left: -100px;
     width: 25%;
     margin-top: 130px;
     float: left;
@@ -157,7 +160,7 @@ footer {
 }
 
 .players-right {
-    margin-right: -200px;
+    margin-right: -100px;
     width: 25%;
     margin-top: 130px;
     float: right;
@@ -165,73 +168,81 @@ footer {
     flex-wrap: wrap;
 }
 
+/*
 .players-right figure:nth-of-type(1) {
     position: absolute;
     top: 70px;
     left: 44.2%;
 }
+*/
 
-.players-left figure:nth-of-type(1) {
+#guardiola {
+    position: absolute;
+    top: 70px;
+    left: 44.2%;
+}
+
+#ederson {
     position: absolute;
     top: 670px;
     left: 44.2%;
 }
 
-.players-left figure:nth-of-type(8) {
+#walker {
     position: absolute;
     top: 550px;
     left: 72%;
 }
 
-.players-left figure:nth-of-type(7) {
+#mendy {
     position: absolute;
     top: 550px;
     left: 17.3%;
 }
 
-.players-left figure:nth-of-type(4) {
+#laporte {
     position: absolute;
     top: 590px;
     left: 55%;
 }
 
-.players-right figure:nth-of-type(5) {
+#stones {
     position: absolute;
     top: 590px;
     left: 33.5%;
 }
 
-.players-left figure:nth-of-type(12) {
+#rodrigo {
     position: absolute;
     top: 450px;
     left: 44.2%;
 }
 
-.players-right figure:nth-of-type(2) {
+#de-bruyne {
     position: absolute;
     top: 380px;
     left: 55%;
 }
 
-.players-right figure:nth-of-type(3) {
+#david-silva {
     position: absolute;
     top: 380px;
     left: 32.5%;
 }
 
-.players-right figure:nth-of-type(8) {
+#sterling {
     position: absolute;
     top: 240px;
     left: 28.5%;
 }
 
-.players-right figure:nth-of-type(4) {
+#bernardo-silva {
     position: absolute;
     top: 240px;
     left: 60%;
 }
 
-.players-right figure:nth-of-type(10) {
+#aguero {
     position: absolute;
     top: 220px;
     left: 44.2%;
@@ -239,7 +250,90 @@ footer {
 
 /* Flip card effect */
 
+.flip-card {
+    background-color: transparent;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    perspective: 1000px;
+    margin: 5px 0 0 5px;
+}
 
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    backface-visibility: hidden;
+    border: 6px solid #EFF7ED; 
+    overflow: hidden;
+}
+
+.flip-card-front {
+    background-color: #98C5E9;
+}
+
+.flip-card-front img { 
+    margin-top: 5px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50px;
+    
+}
+
+.flip-card-front img:hover {
+    animation: danceAround 3s;
+    animation-iteration-count: infinite;
+}
+
+.flip-card-back h1:hover {
+    animation: danceAround 3s;
+    animation-iteration-count: infinite;
+}
+
+.flip-card-back h2:hover {
+    animation: danceAround 3s;
+    animation-iteration-count: infinite;
+}
+
+.flip-card-back {
+    background-color: #fff;
+    
+    color: #00285E;
+    transform: rotateY(180deg);
+    text-align: center;
+    vertical-align: middle;
+    line-height: 80px;
+}
+
+.flip-card-back h1 {
+    font-size: 3.5em;
+}
+
+.flip-card-back h2 {
+    font-size: 1.5em;
+    line-height: 90px;
+}
+
+#football-field .field:hover {
+    animation: fieldTurn 2s;
+    animation-iteration-count: infinite;
+}
 
 /*
 // Animations
@@ -257,4 +351,12 @@ footer {
     80% { transform: translate(-1px, -1px) rotateX(1deg); }
     90% { transform: translate(1px, 2px) rotateY(0deg); }
     100% { transform: translate(1px, -2px) rotateX(-1deg); }
+}
+
+@keyframes fieldTurn {
+    0% { transform: rotateX(0deg) perspective(50em) rotateX(50deg); }
+    25% { transform: rotateY(2deg) perspective(49em) rotateX(50deg); }
+    50% { transform: rotateY(0deg)perspective(50em) rotateX(50deg); }
+    75% { transform: rotateY(-2deg) perspective(51em) rotateX(50deg); }
+    100% { transform: rotateY(0deg)perspective(50em) rotateX(50deg); }
 }
