@@ -186,66 +186,89 @@ footer {
     position: absolute;
     top: 670px;
     left: 44.2%;
+    animation: playerRunsUp 2s;
+    animation-iteration-count: infinite;
 }
 
 #walker {
     position: absolute;
     top: 550px;
     left: 72%;
+    animation: playerRunsDown 2s;
+    animation-iteration-count: infinite;
 }
 
 #mendy {
     position: absolute;
     top: 550px;
     left: 17.3%;
+    animation: playerRunsDown 2s;
+    animation-iteration-count: infinite;
 }
 
 #laporte {
     position: absolute;
     top: 590px;
     left: 55%;
+    animation: playerRunsUp 2s;
+    animation-iteration-count: infinite;
 }
 
 #stones {
     position: absolute;
     top: 590px;
     left: 33.5%;
+    animation: playerRunsUp 2s;
+    animation-iteration-count: infinite;
 }
 
 #rodrigo {
     position: absolute;
     top: 450px;
     left: 44.2%;
+    animation: playerRunsDown 2s;
+    animation-iteration-count: infinite;
 }
 
 #de-bruyne {
     position: absolute;
     top: 380px;
     left: 55%;
+    animation: playerRunsDown 2s;
+    animation-iteration-count: infinite;
 }
 
 #david-silva {
     position: absolute;
     top: 380px;
     left: 32.5%;
+    animation: playerRunsDown 2s;
+    animation-iteration-count: infinite;
 }
 
 #sterling {
     position: absolute;
     top: 240px;
     left: 28.5%;
+    animation: playerRunsUp 2s;
+    animation-iteration-count: infinite;
+    
 }
 
 #bernardo-silva {
     position: absolute;
     top: 240px;
     left: 60%;
+    animation: playerRunsUp 2s;
+    animation-iteration-count: infinite;
 }
 
 #aguero {
     position: absolute;
     top: 220px;
     left: 44.2%;
+    animation: playerRunsDown 2s;
+    animation-iteration-count: infinite;
 }
 
 /* Flip card effect */
@@ -354,9 +377,21 @@ footer {
 }
 
 @keyframes fieldTurn {
-    0% { transform: rotateX(0deg) perspective(50em) rotateX(50deg); }
+    0% { transform: rotateY(0deg) perspective(50em) rotateX(50deg); }
     25% { transform: rotateY(2deg) perspective(49em) rotateX(50deg); }
-    50% { transform: rotateY(0deg)perspective(50em) rotateX(50deg); }
+    50% { transform: rotateY(0deg) perspective(50em) rotateX(50deg); }
     75% { transform: rotateY(-2deg) perspective(51em) rotateX(50deg); }
-    100% { transform: rotateY(0deg)perspective(50em) rotateX(50deg); }
+    100% { transform: rotateY(0deg) perspective(50em) rotateX(50deg); }
+}
+
+@keyframes playerRunsUp {
+    0% { transform: translate(0px, 0px); }
+    50% { transform: translate(0px, 10px); }
+    100% { transform: translate(0px, 0px); }
+}
+
+@keyframes playerRunsDown {
+    0% { transform: translate(0px, 0px); }
+    50% { transform: translate(0px, -10px); }
+    100% { transform: translate(0px, 0px); }
 }
