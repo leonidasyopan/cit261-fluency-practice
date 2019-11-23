@@ -9,18 +9,20 @@ xmlhttp.onreadystatechange = function(){
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         var jsondata = JSON.parse(xmlhttp.responseText); //retrieve result as a JavaScript object
         
-        var games_serialized = JSON.stringify(jsondata);
+        var matches_serialized = JSON.stringify(jsondata);
 
-        localStorage.setItem('gamesStored', games_serialized);
+        localStorage.setItem('matchesStored', matches_serialized);
                     
     }
 }
-xmlhttp.open("GET","https://api.football-data.org/v2/competitions/2019/standings",true,"383412449bc94f34bccb709be3b40dd3");
+xmlhttp.open("GET","https://api.football-data.org/v2/matches");
+xmlhttp.withCredentials = true;
+xmlhttp.setRequestHeader('X-Auth-Token', '383412449bc94f34bccb709be3b40dd3');
 xmlhttp.send();
 
 
-/* Functioms */
-
+/* Functions */
+/*
 function getGamesList(){    
 
     var games_deserialized = JSON.parse(localStorage.getItem('gamesStored'));
@@ -32,3 +34,4 @@ function getGamesList(){
     
     document.getElementById("game-name").innerHTML=output;
 }
+*/
