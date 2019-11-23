@@ -9,20 +9,18 @@ xmlhttp.onreadystatechange = function(){
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         var jsondata = JSON.parse(xmlhttp.responseText); //retrieve result as a JavaScript object
         
-        var matches_serialized = JSON.stringify(jsondata);
+        var games_serialized = JSON.stringify(jsondata);
 
-        localStorage.setItem('matchesStored', matches_serialized);
+        localStorage.setItem('gamesStored', games_serialized);
                     
     }
 }
-xmlhttp.open("GET","https://api.football-data.org/v2/matches");
-xmlhttp.withCredentials = true;
-xmlhttp.setRequestHeader('X-Auth-Token', '383412449bc94f34bccb709be3b40dd3');
+xmlhttp.open("GET","https://api.footystats.org/league-matches?key=example&league_id=2012",true);
 xmlhttp.send();
 
 
-/* Functions */
-/*
+/* Functioms */
+
 function getGamesList(){    
 
     var games_deserialized = JSON.parse(localStorage.getItem('gamesStored'));
@@ -34,4 +32,3 @@ function getGamesList(){
     
     document.getElementById("game-name").innerHTML=output;
 }
-*/
