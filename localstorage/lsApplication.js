@@ -114,3 +114,5 @@ function getGamesInfo(i){
     document.getElementById("game-info").innerHTML=output;
 
 }
+
+/* */

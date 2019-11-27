@@ -46,16 +46,21 @@ function getGamesList(){
 
     var teams_deserialized = JSON.parse(localStorage.getItem('PremierTeams'));
 
-    var premierTeams = teams_deserialized.teams;
-
-    var manCity = premierTeams[5];
+    var premierTeams = teams_deserialized.teams;    
     
+    /* Creates a Form Select element to allow choosing the Game to display the information*/
     var output = '';
-    for (var key in manCity) {
-        if (manCity.hasOwnProperty(key)) {
-            output += '<p>' + key + " -> " + manCity[key] + '</p>';
-        }
+    output = '<div id="choose-team-div">';
+    output += '<p id="select-paragraph">Select Team: </p>';
+    output += '<form>';
+    output +='<select id="team_select" onchange="teamSelect()" >';
+    output += '<option value="choose">Choose Game</option>';
+    for (var i=0; i < premierTeams.length; i++){
+        output += '<option value="'+i+'">'+ premierTeams[i].name+'</option>';
     }
+    output += '</select>';
+    output += '</form>';
+    output += '</div>';
 
     
     /* Listing keys of the oject 
@@ -67,9 +72,56 @@ function getGamesList(){
     */
     
     
-    document.getElementById("player-name").innerHTML=output;
+    document.getElementById("teams-list").innerHTML=output;
 }
 
-const showPlayerButton = document.querySelector("#show-player");
+/* Takes the name of the game from the selection chosen in order to be used to display its info */
+function teamSelect(){
+	var selectBox = document.getElementById("team_select");
+	var teamIndex = selectBox.options[selectBox.selectedIndex].value;
+	getTeamInfo(teamIndex);
+}
 
-showPlayerButton.addEventListener("click", getGamesList);
+function getTeamInfo(i){
+
+    /* Saving requests*/
+    var url = 'https://api.football-data.org/v2/competitions/2021/teams/';
+    var xmlhttp = window.XMLHttpRequest
+        ? new XMLHttpRequest()
+        : new ActiveXObject("Microsoft.XMLHTTP");
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var jsondata = JSON.parse(xmlhttp.responseText);
+            var footData  = JSON.stringify(jsondata);    
+
+            localStorage.setItem('PremierTeams', footData);
+        }
+    }
+
+    xmlhttp.open('GET', url);
+    xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
+    xmlhttp.send();
+    
+
+    var teams_deserialized = JSON.parse(localStorage.getItem('PremierTeams'));
+
+    var premierTeams = teams_deserialized.teams;
+    
+    var output = '';
+    output += "<h2>" + premierTeams[i].name + "</h2>";    
+    output += '<img src="' + premierTeams[i].crestUrl + '" alt="' + premierTeams[i].name + ' Thumb">';
+    output += '<div id="team-data">';
+    output += "<p><strong>Founded:</strong> " + premierTeams[i].founded + "</p>";
+    output += "<p><strong>Website</strong> " + premierTeams[i].website + "</p>";
+    output += '</div>';
+    output += '<div id="game-description">';
+    output += "<p><strong>Description:</strong> " + premierTeams[i].description + "</p>";
+    output += '</div>';
+    output += '</div>';
+
+    document.getElementById("team-info").innerHTML=output;
+
+}
+
+// const showPlayerButton = document.querySelector("#show-player");
