@@ -25,8 +25,7 @@ xmlhttp.send();
 function getGamesList(){    
 
     /* Saving requests*/
-    /*
-    var url = 'https://api.football-data.org/v2/teams/65/';
+    var url = 'https://api.football-data.org/v2/competitions/2021/teams/';
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
         : new ActiveXObject("Microsoft.XMLHTTP");
@@ -36,26 +35,25 @@ function getGamesList(){
             var jsondata = JSON.parse(xmlhttp.responseText);
             var footData  = JSON.stringify(jsondata);    
 
-            localStorage.setItem('manCityTeam', footData);
+            localStorage.setItem('PremierTeams', footData);
         }
     }
 
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
     xmlhttp.send();
-    */
+    
 
-    var team_deserialized = JSON.parse(localStorage.getItem('manCityTeam'));
+    var teams_deserialized = JSON.parse(localStorage.getItem('PremierTeams'));
 
-    var squad = team_deserialized.squad;
+    var premierTeams = teams_deserialized.teams;
+
+    var manCity = premierTeams[5];
     
     var output = '';
-    for (i = 0; i < squad.length; i++) {
-        var player = squad.i;
-        for (var key in player) {
-            if (player.hasOwnProperty(key)) {
-                output += '<p>' + key + " -> " + player[key] + '</p>';
-            }
+    for (var key in manCity) {
+        if (manCity.hasOwnProperty(key)) {
+            output += '<p>' + key + " -> " + manCity[key] + '</p>';
         }
     }
 
