@@ -1,3 +1,38 @@
-body {
-    background-color: brown;
+/* Resetting all attributes of the box sizing */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%; 
+}
+
+table thead {
+    text-align: center;
+}
+
+tr td { 
+text-align: center;
+}
+
+table th, table td {     
+    padding: .75em 0.25em;
+}
+
+tr td:nth-of-type(3) {    
+    text-align: left;
+}
+
+#figure-standings {    
+    width: auto;
+    height: 20px;        
+}
+
+#figure-standings img {
+    width: auto;
+    height: 100%;
+    text-align: center;
 }

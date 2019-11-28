@@ -3,6 +3,7 @@
 function getTeamsList(){    
 
     /* Saving requests*/
+    /*
     var url = 'https://api.football-data.org/v2/competitions/2021/teams/';
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
@@ -20,7 +21,7 @@ function getTeamsList(){
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
     xmlhttp.send();
-    
+    */
 
     var teams_deserialized = JSON.parse(localStorage.getItem('PremierTeams'));
 
@@ -53,6 +54,7 @@ function teamSelect(){
 function getTeamInfo(i){
 
     /* Saving requests*/
+    /*
     var url = 'https://api.football-data.org/v2/competitions/2021/teams/';
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
@@ -70,7 +72,7 @@ function getTeamInfo(i){
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
     xmlhttp.send();
-    
+    */
 
     var teams_deserialized = JSON.parse(localStorage.getItem('PremierTeams'));
 
@@ -91,7 +93,7 @@ function getTeamInfo(i){
 }
 
 function displayStandings() {
-    /* Saving requests*/
+    /* Saving requests*/    
     /*
     var url = 'https://api.football-data.org/v2/competitions/2021/standings/';
     var xmlhttp = window.XMLHttpRequest
@@ -138,12 +140,16 @@ function displayStandings() {
     
     output += '<section>';
 
-    output += '<table><thead><tr><th>Position</th><th>Club</th><th>Played</th><th>Points</th><th>GD</th></tr></thead><tbody>';
+    output += '<table><thead><tr><th>Position</th><th></th><th>Club</th><th>Played</th><th>Won</th><th>Draw</th><th>Lost</th><th>Points</th><th>GD</th></tr></thead><tbody>';
     for (var i=0; i < premierStandings.length; i++){
         output += '<tr>';
         output += '<td>' + premierStandings[i].position + '</td>';
+        output += '<td><figure id="figure-standings"><img src="' + premierStandings[i].team.crestUrl + '" alt="' + premierStandings[i].team.name + ' Thumb"></figure></td>';
         output += '<td>' + premierStandings[i].team.name +  '</td>';
         output += '<td>' + premierStandings[i].playedGames + '</td>';
+        output += '<td>' + premierStandings[i].won + '</td>';
+        output += '<td>' + premierStandings[i].draw + '</td>';
+        output += '<td>' + premierStandings[i].lost + '</td>';
         output += '<td>' + premierStandings[i].points + '</td>';
         output += '<td>' + premierStandings[i].goalDifference + '</td>';
         output += '</tr>';
