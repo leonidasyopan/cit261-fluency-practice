@@ -18,7 +18,7 @@ function openTab(evt, tabName) {
 function getTeamsList(){    
 
     /* Saving requests*/
-    /*
+    
     var url = 'https://api.football-data.org/v2/competitions/2021/teams/';
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
@@ -36,7 +36,7 @@ function getTeamsList(){
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
     xmlhttp.send();
-    */
+    
 
     var teams_deserialized = JSON.parse(localStorage.getItem('PremierTeams'));
 
@@ -44,8 +44,7 @@ function getTeamsList(){
     
     /* Creates a Form Select element to allow choosing the Team to display the information */
     var output = '';
-    output = '<div id="choose-team-div">';
-    output += '<p id="select-paragraph">Select Team: </p>';
+    output = '<div id="choose-team-div">';    
     output += '<form>';
     output +='<select id="team_select" onchange="teamSelect()" >';
     output += '<option value="choose">Choose Game</option>';
@@ -69,7 +68,7 @@ function teamSelect(){
 function getTeamInfo(i){
 
     /* Saving requests*/
-    /*
+    
     var url = 'https://api.football-data.org/v2/competitions/2021/teams/';
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
@@ -87,29 +86,83 @@ function getTeamInfo(i){
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
     xmlhttp.send();
-    */
+    
 
     var teams_deserialized = JSON.parse(localStorage.getItem('PremierTeams'));
 
     var premierTeams = teams_deserialized.teams;
+
+    var teamId = premierTeams[i].id;
     
     /* Create a div to hold all the info of the Selected team */
-    var output = '';
+    var output = '';    
     output += "<h2>" + premierTeams[i].name + "</h2>";    
-    output += '<figure><img src="' + premierTeams[i].crestUrl + '" alt="' + premierTeams[i].name + ' Thumb"></figure>';
+    output += '<figure id="my-team-image"><img src="' + premierTeams[i].crestUrl + '" alt="' + premierTeams[i].name + ' Thumb"></figure>';
     output += '<div id="team-data">';
     output += "<p><strong>Founded:</strong> " + premierTeams[i].founded + "</p>";
     output += "<p><strong>Stadium:</strong> " + premierTeams[i].venue + "</p>";
     output += "<p><strong>Website</strong> " + premierTeams[i].website + "</p>";    
-    output += '</div>';    
+    output += '</div>';        
 
     document.getElementById("team-info").innerHTML=output;
+    
+    getTeamPlayers(teamId);
+}
+
+function getTeamPlayers(team){    
+    var teamId = team;
+    var url = 'https://api.football-data.org/v2/teams/' + teamId + '/' ;
+    var xmlhttp = window.XMLHttpRequest
+        ? new XMLHttpRequest()
+        : new ActiveXObject("Microsoft.XMLHTTP");
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var jsondata = JSON.parse(xmlhttp.responseText);
+            var footData  = JSON.stringify(jsondata);    
+
+            localStorage.setItem('teamInformation', footData);
+        }
+    }
+
+    xmlhttp.open('GET', url);
+    xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
+    xmlhttp.send();
+    
+
+    var standings_deserialized = JSON.parse(localStorage.getItem('teamInformation'));
+
+    var teamInfo = standings_deserialized.squad;  
+
+    /* Create a div to hold all the info of the players of the selected team */
+    var output = '';
+    output += '<section>';
+    output += '<h3>Team Squad</h3>'
+    output += '<table id="table-squad"><thead><tr><th>Player Name</th><th>Position</th><th>Nationality</th><th>Shirt Number</th></tr></thead><tbody>';
+    for (var i=0; i < teamInfo.length; i++){
+        var playerShirt = teamInfo[i].shirtNumber;
+        if( playerShirt === null ) {
+            playerShirt = "N/A"
+        } else {
+            playerShirt = teamInfo[i].shirtNumber;
+        }
+
+        output += '<tr>';
+        output += '<td>' + teamInfo[i].name + '</td>';
+        output += '<td>' + teamInfo[i].position + '</td>';
+        output += '<td>' + teamInfo[i].nationality + '</td>';
+        output += '<td>' + playerShirt + '</td>';
+        output += '</tr>';
+    }    
+    output += '</tbody></table>';
+
+    document.getElementById("team-squad").innerHTML=output;
 
 }
 
 function displayStandings() {
     /* Saving requests*/    
-    /*
+    
     var url = 'https://api.football-data.org/v2/competitions/2021/standings/';
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
@@ -127,7 +180,7 @@ function displayStandings() {
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
     xmlhttp.send();
-    */
+    
 
     var standings_deserialized = JSON.parse(localStorage.getItem('PremierStandings'));
 
@@ -157,7 +210,7 @@ function displayStandings() {
 
 function displayMatches() {
     /* Saving requests*/    
-    /*
+    
     var url = 'https://api.football-data.org/v2/competitions/2021/matches?matchday=14';
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
@@ -175,21 +228,11 @@ function displayMatches() {
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
     xmlhttp.send();
-    */
+    
 
     var matches_deserialized = JSON.parse(localStorage.getItem('PremierMatches'));
 
-    var premierMatches = matches_deserialized;    
-
-
-    /* Working with time 
-    2019-11-30T12:30:00Z
-    var utcDate = '2011-06-29T16:52:48.000Z';  // ISO-8601 formatted date returned from server
-    var localDate = new Date(utcDate);    
-    var date = localDate.toLocaleDateString();
-    var time = localDate.toLocaleTimeString();
-    */
-
+    var premierMatches = matches_deserialized; 
 
     var output = ''; 
     output += '<section>';
@@ -222,3 +265,4 @@ function displayMatches() {
 
 window.addEventListener('DOMContentLoaded', displayStandings, false);
 window.addEventListener('DOMContentLoaded', displayMatches, false);
+window.addEventListener('DOMContentLoaded', getTeamsList, false);

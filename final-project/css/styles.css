@@ -144,9 +144,30 @@ text-align: center;
 
 /* Teams Tab */
 
-form select {
+form {
     width: 100%;
+    margin: 5px 0 20px 0;
+}
 
+select {
+    display: block;
+    margin: 0 auto;
+    padding: 5px 15px;
+    border: 2px solid #042F40;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1.2em;
+}
+
+#my-team-image {
+    text-align: center;
+    height: 200px;
+    width: auto;
+}
+
+#my-team-image img {
+    height: 100%;
+    width: auto;
 }
 
 /*********************
