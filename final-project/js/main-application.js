@@ -1,5 +1,20 @@
 /* Functions */
 
+/* Changing Tabs */
+function openTab(evt, tabName) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("app-page");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active-red", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active-red";
+}
+
 function getTeamsList(){    
 
     /* Saving requests*/
@@ -118,29 +133,9 @@ function displayStandings() {
 
     var premierStandings = standings_deserialized.standings[0].table;    
 
-    var output = '';
-
-    /*
-    for (var key in premierStandings) {
-        if (premierStandings.hasOwnProperty(key)) {
-            output += '<p>' + key + " -> " + premierStandings[key] + '</p>';
-        }
-    }
-
-
-    for (var i=0; i < premierStandings.length; i++){
-        output += '<p>' + premierStandings[i].position + '</p>';
-        output += '<p>' + premierStandings[i].team.name + '</p>';
-        output += '<p>' + premierStandings[i].playedGames + '</p>';
-        output += '<p>' + premierStandings[i].points + '</p>';
-        output += '<p>' + premierStandings[i].goalDifference + '</p>';
-    }
-    */
-    
-    
+    var output = ''; 
     output += '<section>';
-
-    output += '<table><thead><tr><th>Position</th><th></th><th>Club</th><th>Played</th><th>Won</th><th>Draw</th><th>Lost</th><th>Points</th><th>GD</th></tr></thead><tbody>';
+    output += '<table id="table-standings"><thead><tr><th>Position</th><th></th><th>Club</th><th>Played</th><th>Won</th><th>Draw</th><th>Lost</th><th>Points</th><th>GD</th></tr></thead><tbody>';
     for (var i=0; i < premierStandings.length; i++){
         output += '<tr>';
         output += '<td>' + premierStandings[i].position + '</td>';
@@ -155,14 +150,75 @@ function displayStandings() {
         output += '</tr>';
     }    
     output += '</tbody></table>';
-
-    output += '</section>';
-    
+    output += '</section>';    
 
     document.getElementById("premier-standings").innerHTML=output;
-
 }
 
-const showStandings = document.querySelector("#show-standings");
+function displayMatches() {
+    /* Saving requests*/    
+    /*
+    var url = 'https://api.football-data.org/v2/competitions/2021/matches?matchday=14';
+    var xmlhttp = window.XMLHttpRequest
+        ? new XMLHttpRequest()
+        : new ActiveXObject("Microsoft.XMLHTTP");
 
-showStandings.addEventListener("click", displayStandings);
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var jsondata = JSON.parse(xmlhttp.responseText);
+            var footData  = JSON.stringify(jsondata);    
+
+            localStorage.setItem('PremierMatches', footData);
+        }
+    }
+
+    xmlhttp.open('GET', url);
+    xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
+    xmlhttp.send();
+    */
+
+    var matches_deserialized = JSON.parse(localStorage.getItem('PremierMatches'));
+
+    var premierMatches = matches_deserialized;    
+
+
+    /* Working with time 
+    2019-11-30T12:30:00Z
+    var utcDate = '2011-06-29T16:52:48.000Z';  // ISO-8601 formatted date returned from server
+    var localDate = new Date(utcDate);    
+    var date = localDate.toLocaleDateString();
+    var time = localDate.toLocaleTimeString();
+    */
+
+
+    var output = ''; 
+    output += '<section>';
+    output += '<table id="table-matches"><thead><tr><th>Home</th><th>Day</th><th>Time</th><th>Away</th></tr></thead><tbody>';
+    for (var i=0; i < premierMatches.matches.length; i++){
+        /* Convert the time to local time and separate time and day */        
+        var utcDate = premierMatches.matches[i].utcDate;
+        var localDate = new Date(utcDate);
+        var time = localDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+        // var time = localDate.toLocaleTimeString().replace(/(.*)\D\d+/, '$1');
+
+        var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][localDate.getMonth()];
+        var strDate = month + ' ' + localDate.getDate();
+        
+
+        output += '<tr>';
+        output += '<td>' + premierMatches.matches[i].awayTeam.name + '</td>';
+        output += '<td>' + strDate +  '</td>';
+        output += '<td>' + time + '</td>';
+        output += '<td>' + premierMatches.matches[i].homeTeam.name + '</td>';     
+        output += '</tr>';
+    }    
+    output += '</tbody></table>';
+    output += '</section>'
+
+    document.getElementById("current-matches").innerHTML=output;
+}
+
+
+window.addEventListener('DOMContentLoaded', displayStandings, false);
+window.addEventListener('DOMContentLoaded', displayMatches, false);

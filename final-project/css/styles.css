@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700&display=swap');
+
 /* Resetting all attributes of the box sizing */
 * {
     margin: 0;
@@ -6,33 +8,177 @@
     box-sizing: border-box;
 }
 
-table {
-    width: 100%; 
+/* GENERAL STYLE */
+
+body {
+    font-size: 1.1em;
+    font-family: "Roboto","Helvetica Neue",Arial,sans-serif;
 }
 
-table thead {
+header, main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+main {
+    padding: 0 50px;
+    min-height: 90vh;
+}
+
+main h2 {
     text-align: center;
 }
 
-tr td { 
-text-align: center;
+footer {
+    width:100%;    
 }
 
-table th, table td {     
+.footer-info{
+    max-width: 800px;
+    margin: 0 auto;       
+    background-color: #042F40;
+    text-align: center;
+    color: #fff;
+    font-size: .7em;
+    padding: 10px;
+}
+
+/* APPLICATION MENU */
+
+nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;   
+    margin-bottom: 20px;    
+}
+
+nav button {
+    background-color: #1FAFBF;
+    color: #fff;
+    padding: 20px 10px;
+    font-size: 1em;
+    transition: background-color 400ms linear;
+}
+
+button:hover{
+    background-color: #042F40;
+}
+
+.active-red {
+    background-color: #042F40;
+}
+
+
+/* Martches Tab */
+
+#table-matches {
+    width: 100%; 
+    color: #A0A5AA;
+}
+
+#table-matches thead {
+    background-color: #F0F2F5;
+    text-align: center;
+}
+
+#table-matches th, table td {     
     padding: .75em 0.25em;
 }
 
-tr td:nth-of-type(3) {    
+#table-matches tr td:nth-of-type(1) {    
+    text-align: right;
+}
+
+#table-matches tr:hover {
+    background-color: #F0F2F5;
+}
+
+/* Standings Tab */
+
+#table-standings {
+    width: 100%; 
+    color: #A0A5AA;
+}
+
+#table-standings thead {
+    background-color: #F0F2F5;
+    text-align: center;
+}
+
+#table-standings tr td { 
+text-align: center;
+}
+
+#table-standings th, table td {     
+    padding: .75em 0.25em;
+}
+
+#table-standings tr td:nth-of-type(1) {    
+    color: rgb(93, 93, 94);
+    font-weight: bold;
+}
+
+#table-standings tr td:nth-of-type(3) {    
     text-align: left;
+}
+
+#table-standings tr td:nth-of-type(8) {    
+    color: rgb(93, 93, 94);
+    font-weight: bold;
+}
+
+#table-standings tr:hover {
+    background-color: #F0F2F5;
 }
 
 #figure-standings {    
     width: auto;
-    height: 20px;        
+    height: 30px;        
 }
 
 #figure-standings img {
     width: auto;
     height: 100%;
     text-align: center;
+}
+
+/* Teams Tab */
+
+form select {
+    width: 100%;
+
+}
+
+/*********************
+***** ANIMATIONS *****
+**********************/
+
+.animate-from-top{
+    position:relative;
+    animation:animatetop 0.8s
+}
+
+@keyframes animatetop{
+    from{top:-300px;opacity:0} 
+    to{top:0;opacity:1}
+}
+
+.animate-from-left{
+    position:relative;
+    animation:animateleft 0.8s
+}
+
+@keyframes animateleft{
+    from{left:-300px;opacity:0} 
+    to{left:0;opacity:1}
+}
+
+.animate-from-right{
+    position:relative;
+    animation:animateright 0.8s
+}
+
+@keyframes animateright{
+    from{right:-300px;opacity:0} 
+    to{right:0;opacity:1}
 }

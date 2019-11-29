@@ -6,17 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Premier League Application</title>
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">    
 </head>
 <body onload="getTeamsList()">
-    
-    <div id="teams-list"></div>
+    <header>
+        <nav>
+            <button class="tablink active-red" onclick="openTab(event,'current-matches')">Matches</button>
+            <button class="tablink" onclick="openTab(event,'premier-standings')">Standings</button>
+            <button class="tablink" onclick="openTab(event,'my-team')">Teams</button>
+        </nav>
+    </header>
+    <main>
+        
+        <div id="current-matches" class="app-page animate-from-left" onload="displayStandings()">
+            <h2>Current Matches</h2>
+        </div>
 
-    <div id="team-info"></div>
+        <div id="premier-standings" class="app-page animate-from-top" style="display:none">
+            <h2>Standings</h2>
+        </div> 
+        
+        <div id="my-team" class="app-page animate-from-right" style="display:none">
+            <h2>Teams</h2>
+            <div id="teams-list"></div>
 
-    <button id="show-standings">Show Standings</button>
+            <div id="team-info"></div>
+        </div>
 
-    <div id="premier-standings"></div>    
+        
+    </main>
+    <footer>
+        <div class="footer-info">
+            <p>Copyright © 2019 by Leonidas Yopan | <i>Know Your Football.</i></p>
+        </div>
+    </footer>   
 
     <script src="js/main-application.js"></script>
 </body>
