@@ -123,12 +123,12 @@ function getTeamPlayers(team){
 
             localStorage.setItem('teamInformation', footData);
         }
+        
     }
 
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
-    xmlhttp.send();
-    
+    xmlhttp.send();      
 
     var standings_deserialized = JSON.parse(localStorage.getItem('teamInformation'));
 
@@ -211,7 +211,7 @@ function displayStandings() {
 function displayMatches() {
     /* Saving requests*/    
     
-    var url = 'https://api.football-data.org/v2/competitions/2021/matches?matchday=14';
+    var url = 'https://api.football-data.org/v2/competitions/2021/matches?matchday=15';
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
         : new ActiveXObject("Microsoft.XMLHTTP");
