@@ -211,8 +211,6 @@ function getTeamPlayers(){
 
 }
 
-
-
 function displayStandings() {
     /* Saving requests*/    
     
@@ -246,7 +244,7 @@ function displayStandings() {
     for (var i=0; i < premierStandings.length; i++){
         output += '<tr>';
         output += '<td>' + premierStandings[i].position + '</td>';
-        output += '<td><figure id="figure-standings"><img src="' + premierStandings[i].team.crestUrl + '" alt="' + premierStandings[i].team.name + ' Thumb"></figure></td>';
+        output += '<td><figure class="figure-standings"><img src="' + premierStandings[i].team.crestUrl + '" alt="' + premierStandings[i].team.name + ' Thumb"></figure></td>';
         output += '<td>' + premierStandings[i].team.name +  '</td>';
         output += '<td>' + premierStandings[i].playedGames + '</td>';
         output += '<td>' + premierStandings[i].won + '</td>';
@@ -291,9 +289,52 @@ function displayMatches() {
     var output = ''; 
     output += '<h2>Matchday 15</h2>'
     output += '<section>';
+
+    var teams_deserialized = JSON.parse(localStorage.getItem('PremierTeams'));
+
+    var premierTeams = teams_deserialized.teams;
+    
+    output += '<table id="table-matches"><thead><tr><th>Date/Time</th><th>Home</th><th></th><th>X</th><th></th><th>Away</th></tr></thead><tbody>';
+    for (var i=0; i < premierMatches.matches.length; i++){
+        // Convert the time to local time and separate time and day       
+        var utcDate = premierMatches.matches[i].utcDate;
+        var localDate = new Date(utcDate);
+        var time = localDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+        // var time = localDate.toLocaleTimeString().replace(/(.*)\D\d+/, '$1');
+
+        var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][localDate.getMonth()];
+        var strDate = month + ' ' + localDate.getDate();
+
+        var awayId = premierMatches.matches[i].awayTeam.id;
+        var homeId = premierMatches.matches[i].homeTeam.id;
+        var awayURL = '';
+        var homeURL = '';
+
+
+        for(let i = 0; i < premierTeams.length; i++){
+            if(premierTeams[i].id == awayId) {
+                awayURL = premierTeams[i].crestUrl;
+            } else if (premierTeams[i].id == homeId) {
+                homeURL = premierTeams[i].crestUrl;
+            }
+        }
+        
+        output += '<tr>';
+        output += '<td>' + strDate + ' at ' + time + '</td>';
+        output += '<td>' + premierMatches.matches[i].homeTeam.name + '</td>';
+        output += '<td><figure class="figure-matches"><img src="' + homeURL + '" alt="' + premierTeams.name + ' Thumb"></figure></td>';
+        output += '<td> X </td>';
+        output += '<td><figure class="figure-matches"><img src="' + awayURL + '" alt="' + premierTeams.name + ' Thumb"></figure></td>';            
+        output += '<td>' + premierMatches.matches[i].awayTeam.name + '</td>';     
+        output += '</tr>';
+    }
+
+    
+/*
     output += '<table id="table-matches"><thead><tr><th>Home</th><th>Day</th><th>Time</th><th>Away</th></tr></thead><tbody>';
     for (var i=0; i < premierMatches.matches.length; i++){
-        /* Convert the time to local time and separate time and day */        
+        // Convert the time to local time and separate time and day       
         var utcDate = premierMatches.matches[i].utcDate;
         var localDate = new Date(utcDate);
         var time = localDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
@@ -303,7 +344,6 @@ function displayMatches() {
 "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][localDate.getMonth()];
         var strDate = month + ' ' + localDate.getDate();
         
-
         output += '<tr>';
         output += '<td>' + premierMatches.matches[i].awayTeam.name + '</td>';
         output += '<td>' + strDate +  '</td>';
@@ -311,6 +351,7 @@ function displayMatches() {
         output += '<td>' + premierMatches.matches[i].homeTeam.name + '</td>';     
         output += '</tr>';
     }    
+*/
     output += '</tbody></table>';
     output += '</section>'
 
