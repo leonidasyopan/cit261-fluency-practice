@@ -56,6 +56,7 @@ function getTeamsList(){
     output += '</div>';
     
     document.getElementById("teams-list").innerHTML=output;
+    buttonONbuttonOff();
 }
 
 /* Takes the name of the team from the selection chosen in order to be used to display its info */
@@ -97,7 +98,7 @@ function getTeamInfo(i){
     /* Create a div to hold all the info of the Selected team */
     var output = '';    
     output += "<h2>" + premierTeams[i].name + "</h2>";    
-    output += '<figure id="my-team-image"><img src="' + premierTeams[i].crestUrl + '" alt="' + premierTeams[i].name + ' Thumb"></figure>';
+    output += '<figure class="my-team-image"><img src="' + premierTeams[i].crestUrl + '" alt="' + premierTeams[i].name + ' Thumb"></figure>';
     output += '<div id="team-data">';
     output += "<p><strong>Founded:</strong> " + premierTeams[i].founded + "</p>";
     output += "<p><strong>Stadium:</strong> " + premierTeams[i].venue + "</p>";
@@ -105,12 +106,59 @@ function getTeamInfo(i){
     output += '</div>';        
 
     document.getElementById("team-info").innerHTML=output;
+
+    var showSquadTable = document.querySelector("#show-squad-table");
+
+    showSquadTable.setAttribute("class", "");
+
+    showSquadTable.classList.add(teamId);        
     
-    getTeamPlayers(teamId);
+    buttonONbuttonOff();
+    runTeamPlayersBeforeShow();
+    
+    document.getElementById("team-squad").innerHTML = " ";
 }
 
-function getTeamPlayers(team){    
-    var teamId = team;
+/* Hides or Shows Team Information button */
+function buttonONbuttonOff() {
+    var showSquadTable = document.querySelector("#show-squad-table");
+    var teamInfoDiv = document.querySelector("#team-info");
+    // var cleanSquadButton = teamInfoDiv.innerHTML.trim();
+    if (teamInfoDiv.hasChildNodes()) {
+        showSquadTable.style.display = "block";
+    } else {
+        showSquadTable.style.display = "none";
+    }
+}
+
+function runTeamPlayersBeforeShow() {
+    var teamId = document.querySelector("#show-squad-table").classList[0];
+    var url = 'https://api.football-data.org/v2/teams/' + teamId + '/' ;
+    var xmlhttp = window.XMLHttpRequest
+        ? new XMLHttpRequest()
+        : new ActiveXObject("Microsoft.XMLHTTP");
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var jsondata = JSON.parse(xmlhttp.responseText);
+            var footData  = JSON.stringify(jsondata);    
+
+            localStorage.setItem('teamInformation', footData);
+        }
+        
+    }
+
+    xmlhttp.open('GET', url);
+    xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
+    xmlhttp.send();      
+
+    var standings_deserialized = JSON.parse(localStorage.getItem('teamInformation'));
+
+    var teamInfo = standings_deserialized.squad;  
+}
+
+function getTeamPlayers(){
+    var teamId = document.querySelector("#show-squad-table").classList[0];
     var url = 'https://api.football-data.org/v2/teams/' + teamId + '/' ;
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
@@ -147,10 +195,13 @@ function getTeamPlayers(team){
             playerShirt = teamInfo[i].shirtNumber;
         }
 
+        var playerNationality = teamInfo[i].nationality;
+        var playerNationalityURL = playerNationality.replace(/\s+/g, '-').toLowerCase();
+
         output += '<tr>';
         output += '<td>' + teamInfo[i].name + '</td>';
         output += '<td>' + teamInfo[i].position + '</td>';
-        output += '<td>' + teamInfo[i].nationality + '</td>';
+        output += '<td>' + '<figure class="player-nationality-image"><img src="img/country-flags/' + playerNationalityURL + '.svg" alt="' + playerNationality + '"></figure>'; + '</td>';
         output += '<td>' + playerShirt + '</td>';
         output += '</tr>';
     }    
@@ -159,6 +210,8 @@ function getTeamPlayers(team){
     document.getElementById("team-squad").innerHTML=output;
 
 }
+
+
 
 function displayStandings() {
     /* Saving requests*/    
@@ -187,6 +240,7 @@ function displayStandings() {
     var premierStandings = standings_deserialized.standings[0].table;    
 
     var output = ''; 
+    output += '<h2>Premier League Standings</h2>'
     output += '<section>';
     output += '<table id="table-standings"><thead><tr><th>Position</th><th></th><th>Club</th><th>Played</th><th>Won</th><th>Draw</th><th>Lost</th><th>Points</th><th>GD</th></tr></thead><tbody>';
     for (var i=0; i < premierStandings.length; i++){

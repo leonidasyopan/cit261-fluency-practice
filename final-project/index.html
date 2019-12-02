@@ -11,26 +11,28 @@
 <body>
     <header>
         <nav>
-            <button class="tablink active-red" onclick="openTab(event,'current-matches')">Matches</button>
-            <button class="tablink" onclick="openTab(event,'premier-standings')">Standings</button>
+            <button class="tablink active-red" onclick="openTab(event,'premier-standings')">Standings</button>
+            <button class="tablink" onclick="openTab(event,'current-matches')">Matches</button>            
             <button class="tablink" onclick="openTab(event,'my-team')">Teams</button>
         </nav>
     </header>
-    <main>
-        
-        <div id="current-matches" class="app-page animate-from-left" onload="displayStandings()">
-            <h2>Current Matches</h2>
-        </div>
+    <main>        
 
-        <div id="premier-standings" class="app-page animate-from-top" style="display:none">
+        <div id="premier-standings" class="app-page animate-from-left">
             <h2>Standings</h2>
         </div> 
+
+        <div id="current-matches" class="app-page animate-from-top" onload="displayStandings()" style="display:none">
+                <h2>Current Matches</h2>
+        </div>
         
         <div id="my-team" class="app-page animate-from-right" style="display:none">
             <h2>Teams</h2>
             <div id="teams-list"></div>
 
             <div id="team-info"></div>
+
+            <button id="show-squad-table" onclick="getTeamPlayers()">Show Squad List</button>
 
             <div id="team-squad"></div>
         </div>
