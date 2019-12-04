@@ -56,7 +56,9 @@ nav {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     text-align: center;   
-    margin-bottom: 20px;    
+    margin-bottom: 20px;
+    position:relative;
+    animation: navinanimate 2s;    
 }
 
 nav button {
@@ -110,11 +112,10 @@ button:hover{
     transition: all 500ms ease-in-out;    
 }
 
-.figure-matches {
-    display: block;    
-    margin: 0 auto;
+.figure-matches {    
     width: auto;
     height: 30px;        
+    text-align: center;
 }
 
 .figure-matches img {
@@ -236,6 +237,7 @@ select {
 #table-squad {
     /* width: 100%;  */
     color: #A0A5AA;
+    margin: 0 auto;
 }
 
 #table-squad thead {
@@ -283,7 +285,7 @@ text-align: center;
 
 .animate-from-top{
     position:relative;
-    animation:animatetop 0.8s
+    animation:animatetop 0.8s;
 }
 
 @keyframes animatetop{
@@ -293,7 +295,7 @@ text-align: center;
 
 .animate-from-left{
     position:relative;
-    animation:animateleft 0.8s
+    animation:animateleft 0.8s;
 }
 
 @keyframes animateleft{
@@ -303,12 +305,17 @@ text-align: center;
 
 .animate-from-right{
     position:relative;
-    animation:animateright 0.8s
+    animation:animateright 0.8s;
 }
 
 @keyframes animateright{
     from{right:-300px;opacity:0} 
     to{right:0;opacity:1}
+}
+
+@keyframes navinanimate{
+    from{top:-300px;} 
+    to{top:0;}
 }
 
 /*  
