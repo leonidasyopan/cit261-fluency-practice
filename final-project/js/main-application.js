@@ -211,6 +211,11 @@ function getTeamPlayers(){
 
 }
 
+function slideShield() {
+    const myTeamImage = document.querySelector(".my-team-image");
+    
+}
+
 function displayStandings() {
     /* Saving requests*/    
     
@@ -362,3 +367,7 @@ function displayMatches() {
 window.addEventListener('DOMContentLoaded', displayStandings, false);
 window.addEventListener('DOMContentLoaded', displayMatches, false);
 window.addEventListener('DOMContentLoaded', getTeamsList, false);
+
+const teamInfoDiv = document.querySelector("#team-info");
+
+teamInfoDiv.addEventListener('mouseover', )

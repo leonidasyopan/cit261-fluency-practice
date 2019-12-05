@@ -234,6 +234,13 @@ select {
     margin: 15px 0;
 }
 
+#team-data {
+    margin: -170px auto 100px auto;
+    padding-top: 30px;
+    max-width: 300px;
+    line-height: 1.7em;
+}
+
 #table-squad {
     /* width: 100%;  */
     color: #A0A5AA;
