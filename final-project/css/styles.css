@@ -204,6 +204,7 @@ select {
     text-align: center;
     height: 200px;
     width: auto;
+    transition: all 2s ease-in-out;
 }
 
 .my-team-image img {
@@ -235,10 +236,11 @@ select {
 }
 
 #team-data {
+    display: none;
     margin: -170px auto 100px auto;
     padding-top: 30px;
     max-width: 300px;
-    line-height: 1.7em;
+    line-height: 1.7em;    
 }
 
 #table-squad {
@@ -323,6 +325,19 @@ text-align: center;
 @keyframes navinanimate{
     from{top:-300px;} 
     to{top:0;}
+}
+
+.animate-team-data{
+    position:relative;
+    animation: animateTeamData 0.8s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes animateTeamData{
+    from{left:-300px;opacity:0} 
+    to{left:0;opacity:1}
 }
 
 /*  

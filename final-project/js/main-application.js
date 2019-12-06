@@ -211,9 +211,21 @@ function getTeamPlayers(){
 
 }
 
-function slideShield() {
+function slideShieldOn() {
     const myTeamImage = document.querySelector(".my-team-image");
-    
+    myTeamImage.style.marginLeft = "-400px";
+
+    const teamDataDiv = document.querySelector("#team-data");
+    teamDataDiv.style.opacity = "0";
+    // teamDataDiv.classList.add("animate-team-data");
+}
+
+function slideShieldOut() {
+    const myTeamImage = document.querySelector(".my-team-image");
+    myTeamImage.style.marginLeft = "0";
+
+    const teamDataDiv = document.querySelector("#team-data");
+    teamDataDiv.style.opacity = "1";
 }
 
 function displayStandings() {
@@ -370,4 +382,5 @@ window.addEventListener('DOMContentLoaded', getTeamsList, false);
 
 const teamInfoDiv = document.querySelector("#team-info");
 
-teamInfoDiv.addEventListener('mouseover', )
+teamInfoDiv.addEventListener('mouseover', slideShieldOn)
+teamInfoDiv.addEventListener('mouseout', slideShieldOut)
