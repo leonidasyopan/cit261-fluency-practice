@@ -257,7 +257,7 @@ function displayStandings() {
     var output = ''; 
     output += '<h2>Premier League Standings</h2>'
     output += '<section>';
-    output += '<table id="table-standings"><thead><tr><th>Position</th><th></th><th>Club</th><th>Played</th><th>Won</th><th>Draw</th><th>Lost</th><th>Points</th><th>GD</th></tr></thead><tbody>';
+    output += '<table id="table-standings"><thead><tr><th>#</th><th></th><th>Club</th><th> P </th><th> W </th><th> D </th><th> L </th><th>Pts</th><th>GD</th></tr></thead><tbody>';
     for (var i=0; i < premierStandings.length; i++){
         output += '<tr>';
         output += '<td>' + premierStandings[i].position + '</td>';
@@ -272,6 +272,7 @@ function displayStandings() {
         output += '</tr>';
     }    
     output += '</tbody></table>';
+    output += '<p id="legends"><strong>P</strong> = Played, <strong>W</strong> = Won, <strong>D</strong> = Draw, <strong>L</strong> = Lost, <strong>Pts</strong> = Points</p>';
     output += '</section>';    
 
     document.getElementById("premier-standings").innerHTML=output;

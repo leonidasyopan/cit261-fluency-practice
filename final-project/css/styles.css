@@ -129,6 +129,7 @@ button:hover{
 #table-standings {
     /* width: 100%;  */
     color: #A0A5AA;
+    margin: 0 auto;
 }
 
 #table-standings thead {
@@ -180,6 +181,11 @@ text-align: center;
 .figure-standings img {
     width: auto;
     height: 100%;
+    text-align: center;
+}
+
+#legends {
+    margin-top: 20px;
     text-align: center;
 }
 
