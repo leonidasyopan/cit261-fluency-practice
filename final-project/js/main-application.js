@@ -213,19 +213,23 @@ function getTeamPlayers(){
 
 function slideShieldOn() {
     const myTeamImage = document.querySelector(".my-team-image");
-    myTeamImage.style.marginLeft = "-400px";
+    myTeamImage.style.marginLeft = "-40%";
 
     const teamDataDiv = document.querySelector("#team-data");
-    teamDataDiv.style.opacity = "0";
-    // teamDataDiv.classList.add("animate-team-data");
+    teamDataDiv.classList.add("animate-team-data");
 }
 
+/* Transition that brings the badge back to its position  */
 function slideShieldOut() {
     const myTeamImage = document.querySelector(".my-team-image");
     myTeamImage.style.marginLeft = "0";
 
-    const teamDataDiv = document.querySelector("#team-data");
-    teamDataDiv.style.opacity = "1";
+    const teamDataDiv = document.querySelector("#team-data");    
+    teamDataDiv.classList.remove("animate-team-data");    
+    teamDataDiv.style.marginLeft = "-300px";
+    teamDataDiv.style.opacity = "0";
+    teamDataDiv.style.transition = "all 2s";
+    
 }
 
 function displayStandings() {
@@ -346,30 +350,7 @@ function displayMatches() {
         output += '<td><figure class="figure-matches"><img src="' + awayURL + '" alt="' + premierTeams.name + ' Thumb"></figure></td>';            
         output += '<td>' + premierMatches.matches[i].awayTeam.name + '</td>';     
         output += '</tr>';
-    }
-
-    
-/*
-    output += '<table id="table-matches"><thead><tr><th>Home</th><th>Day</th><th>Time</th><th>Away</th></tr></thead><tbody>';
-    for (var i=0; i < premierMatches.matches.length; i++){
-        // Convert the time to local time and separate time and day       
-        var utcDate = premierMatches.matches[i].utcDate;
-        var localDate = new Date(utcDate);
-        var time = localDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-        // var time = localDate.toLocaleTimeString().replace(/(.*)\D\d+/, '$1');
-
-        var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][localDate.getMonth()];
-        var strDate = month + ' ' + localDate.getDate();
-        
-        output += '<tr>';
-        output += '<td>' + premierMatches.matches[i].awayTeam.name + '</td>';
-        output += '<td>' + strDate +  '</td>';
-        output += '<td>' + time + '</td>';
-        output += '<td>' + premierMatches.matches[i].homeTeam.name + '</td>';     
-        output += '</tr>';
-    }    
-*/
+    } 
     output += '</tbody></table>';
     output += '</section>'
 
