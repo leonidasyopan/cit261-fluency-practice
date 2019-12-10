@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Premier League Application</title>
-
+    
+    <!-- This is the stylesheet for the whole application -->
     <link rel="stylesheet" href="css/styles.css">    
 </head>
 <body>
     <header>
+        <!-- This is the navigation for the buttons that create the tabs of the application -->
         <nav>
             <button class="tablink active-red" onclick="openTab(event,'premier-standings')">Standings</button>
             <button class="tablink" onclick="openTab(event,'current-matches')">Matches</button>            
@@ -18,14 +20,19 @@
     </header>
     <main>        
 
+        <!-- The application's HTML holds 3 main divs, one for each tab -->
+
+        <!-- This DIV receives the information for the Standings -->
         <div id="premier-standings" class="app-page animate-from-left">
             <h2>Standings</h2>
         </div> 
 
+        <!-- This DIV receives the information for the Matches -->
         <div id="current-matches" class="app-page animate-from-top" onload="displayStandings()" style="display:none">
                 <h2>Current Matches</h2>
         </div>
         
+        <!-- This DIV receives the information for the different Teams -->
         <div id="my-team" class="app-page animate-from-right" style="display:none">
             <h2>Teams</h2>
             <div id="teams-list"></div>
@@ -40,11 +47,13 @@
         
     </main>
     <footer>
+        <!-- Here is the simple information of the footer -->
         <div class="footer-info">
             <p>Copyright © 2019 by Leonidas Yopan | <i>Know Your Football.</i></p>
         </div>
     </footer>   
 
+    <!-- This is the JavaScript application - It holds all the functions of the application -->
     <script src="js/main-application.js"></script>
 </body>
 </html>
