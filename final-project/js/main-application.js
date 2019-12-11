@@ -184,7 +184,7 @@ function getTeamPlayers(){
 
     /* Create a div to hold all the info of the players of the selected team */
     var output = '';
-    output += '<section>';
+    output += '<section class="animate-from-left">';
     output += '<h3>Team Squad</h3>'
     output += '<table id="table-squad"><thead><tr><th>Player Name</th><th>Position</th><th>Nationality</th><th>Shirt Number</th></tr></thead><tbody>';
     for (var i=0; i < teamInfo.length; i++){
