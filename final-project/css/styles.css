@@ -290,6 +290,7 @@ text-align: center;
 #table-squad tr:hover {
     background-color: rgba(4, 47, 64, 0.5);
     transition: background-color 200ms ease-in-out;
+    color: #fff;
 }
 
 .player-nationality-image {
