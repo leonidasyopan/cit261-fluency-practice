@@ -40,6 +40,7 @@ footer {
     margin-top: 50px;   
 }
 
+/* The footer is centerd to the page just like the header with the navigation and its tabs */
 .footer-info{
     max-width: 800px;
     margin: 0 auto;       
@@ -50,8 +51,11 @@ footer {
     padding: 10px;
 }
 
-/* APPLICATION MENU */
+/********************** 
+** APPLICATION MENU 
+***********************/
 
+/* The navigation is centered to the page */
 nav {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -77,8 +81,9 @@ button:hover{
     background-color: #042F40;
 }
 
-
-/* Martches Tab */
+/*****************
+** Matches Tab **
+******************/
 
 #table-matches {
     /* width: 100%; */
@@ -124,7 +129,9 @@ button:hover{
     text-align: center;
 }
 
-/* Standings Tab */
+/******************
+** Standings Tab **
+*******************/
 
 #table-standings {
     /* width: 100%;  */
@@ -189,7 +196,9 @@ text-align: center;
     text-align: center;
 }
 
-/* Teams Tab */
+/**************
+** Teams Tab **
+***************/
 
 form {
     width: 100%;
@@ -252,8 +261,7 @@ select {
     transition: opacity 1000ms ease-out;    
 }
 
-#table-squad {
-    /* width: 100%;  */
+#table-squad {    
     color: #A0A5AA;
     margin: 0 auto;
 }
@@ -348,9 +356,9 @@ text-align: center;
     to{margin-left:50%;opacity:1}
 }
 
-/*  
-// MEDIUM SCREENS - MEDIA QUERY BREAK
-*/
+/***********************************************  
+** MEDIUM AND BIG SCREENS - MEDIA QUERY BREAK **
+************************************************/
 @media (min-width:600px) {
 
     body {
@@ -364,12 +372,5 @@ text-align: center;
     main {
         padding: 0 50px;
     }       
-
-}
-
-/*  
-// BIG SCREENS - MEDIA QUERY BREAK
-*/
-@media (min-width:1025px) {
 
 }
