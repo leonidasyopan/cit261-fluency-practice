@@ -285,7 +285,7 @@ function displayStandings() {
 function displayMatches() {
     /* Saving requests*/    
     
-    var url = 'https://api.football-data.org/v2/competitions/2021/matches?matchday=15';
+    var url = 'https://api.football-data.org/v2/competitions/2021/matches?matchday=17';
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
         : new ActiveXObject("Microsoft.XMLHTTP");
@@ -309,7 +309,7 @@ function displayMatches() {
     var premierMatches = matches_deserialized; 
 
     var output = ''; 
-    output += '<h2>Matchday 15</h2>'
+    output += '<h2>Matchday 17</h2>'
     output += '<section>';
 
     var teams_deserialized = JSON.parse(localStorage.getItem('PremierTeams'));
