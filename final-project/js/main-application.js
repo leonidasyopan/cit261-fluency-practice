@@ -15,6 +15,7 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active-red";
 }
 
+/* This function is responsible for accessing the API database and creating the list of Teams at the Premier League */
 function getTeamsList(){    
 
     /* Saving requests*/
@@ -66,6 +67,7 @@ function teamSelect(){
 	getTeamInfo(teamIndex);
 }
 
+/* This function is responsible for accessing the API database and then displaying the basict information of the selected Team - badge, name, founded date, etc. */
 function getTeamInfo(i){
 
     /* Saving requests*/
@@ -131,7 +133,9 @@ function buttonONbuttonOff() {
     }
 }
 
+/* This is actually a "work-around" I needed to create. When I was calling for the players of the team, somehow the API was bringing the players of the previous Team, not the current one. So I needed to create this function to fecth the players list before running the function to display the players list. There must be a best alternative, but at least this one works perfectly well. */
 function runTeamPlayersBeforeShow() {
+    /* This trick to know witch team should be used to display the players gave a lot of trouble. Because I needed to make the application figure out witch team was being displayerd, since the API was using different JSON files for the team's simple info and for the players */
     var teamId = document.querySelector("#show-squad-table").classList[0];
     var url = 'https://api.football-data.org/v2/teams/' + teamId + '/' ;
     var xmlhttp = window.XMLHttpRequest
@@ -157,6 +161,7 @@ function runTeamPlayersBeforeShow() {
     var teamInfo = standings_deserialized.squad;  
 }
 
+/* This function then creates a table with all of the players of the team */
 function getTeamPlayers(){
     var teamId = document.querySelector("#show-squad-table").classList[0];
     var url = 'https://api.football-data.org/v2/teams/' + teamId + '/' ;
@@ -195,6 +200,7 @@ function getTeamPlayers(){
             playerShirt = teamInfo[i].shirtNumber;
         }
 
+        /* This was one of my favorite tricks. I wanted to show a flag instead of the words telling the country of the player. But the API only brought the name of the country, no flag included. Then I found a pack of icons for flags and instead of using a huge Switch statement, I simply made sure all the names of the images were lowercase and simple than I converted the name from the API to match the url I needed. 3 or 4 flags weren't available and I needed to work them manually, but the rest (over a hundred) worked directly from the package of icons because of this trick */
         var playerNationality = teamInfo[i].nationality;
         var playerNationalityURL = playerNationality.replace(/\s+/g, '-').toLowerCase();
 
@@ -211,6 +217,7 @@ function getTeamPlayers(){
 
 }
 
+/* This function controls the animation for the Badge to slide to the side and show the information */
 function slideShieldOn() {
     const myTeamImage = document.querySelector(".my-team-image");
     myTeamImage.style.marginLeft = "-40%";
@@ -219,7 +226,7 @@ function slideShieldOn() {
     teamDataDiv.classList.add("animate-team-data");
 }
 
-/* Transition that brings the badge back to its position  */
+/* Transition that brings the badge back to its position and to hide the information of the team */
 function slideShieldOut() {
     const myTeamImage = document.querySelector(".my-team-image");
     myTeamImage.style.marginLeft = "0";
@@ -232,6 +239,7 @@ function slideShieldOut() {
     
 }
 
+/* This funtion is responsible for fecthing the API's information of the Standings. It then creates a table to show the stadings. */ 
 function displayStandings() {
     /* Saving requests*/    
     
@@ -282,6 +290,7 @@ function displayStandings() {
     document.getElementById("premier-standings").innerHTML=output;
 }
 
+/* This funtion is responsible for fecthing the API's information of the Matches. It then creates a table to show the matches for a given week. */ 
 function displayMatches() {
     /* Saving requests*/    
     
@@ -333,7 +342,7 @@ function displayMatches() {
         var awayURL = '';
         var homeURL = '';
 
-
+        /* I also felt very good about the trick I created to show the icon/badge of the team of the Match, since this icon was not available in the JSON file of the matches and I didn't want to manually create all the icons for all the Teams. I also knew I already had the information in the JSON file for the Standings, so I just needed to communicate between the two.*/
         for(let i = 0; i < premierTeams.length; i++){
             if(premierTeams[i].id == awayId) {
                 awayURL = premierTeams[i].crestUrl;
@@ -357,11 +366,13 @@ function displayMatches() {
     document.getElementById("current-matches").innerHTML=output;
 }
 
-
+/* These event listeners are responsible for running the functions when the page first loads */
 window.addEventListener('DOMContentLoaded', displayStandings, false);
 window.addEventListener('DOMContentLoaded', displayMatches, false);
 window.addEventListener('DOMContentLoaded', getTeamsList, false);
 
+
+/* These event listneres control the animation of the badge in the Team Tab */
 const teamInfoDiv = document.querySelector("#team-info");
 
 teamInfoDiv.addEventListener('mouseover', slideShieldOn)
