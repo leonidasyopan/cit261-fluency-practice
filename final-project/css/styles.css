@@ -367,8 +367,9 @@ text-align: center;
 }
 
 @keyframes animateTeamData{
-    from{transform: translate(-300px);opacity:0} 
-    to{transform: translate(650px);opacity:1}
+    0% {transform: translate(-100px);opacity:0} 
+    50% {transform: translate(750px);opacity:0.5}
+    100% {transform: translate(650px);opacity:1}
 }
 
 /***********************************************  
