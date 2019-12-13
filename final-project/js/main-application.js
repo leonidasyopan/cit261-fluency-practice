@@ -104,7 +104,8 @@ function getTeamInfo(i){
     output += '<div id="team-data">';
     output += "<p><strong>Founded:</strong> " + premierTeams[i].founded + "</p>";
     output += "<p><strong>Stadium:</strong> " + premierTeams[i].venue + "</p>";
-    output += "<p><strong>Website</strong> " + premierTeams[i].website + "</p>";    
+    output += '<p><strong>Website:</strong> <a href="' + premierTeams[i].website + '" target="_blank">' + premierTeams[i].website + '</a></p>'; 
+    // output += "<p><strong>Website</strong> " + premierTeams[i].website + "</p>";    
     output += '</div>';        
 
     document.getElementById("team-info").innerHTML=output;
