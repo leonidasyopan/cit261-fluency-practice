@@ -329,8 +329,9 @@ text-align: center;
 }
 
 @keyframes animatetop{
-    from{top:-300px;opacity:0} 
-    to{top:0;opacity:1}
+    0% {top:-300px;opacity:0} 
+    50% {top:50px;opacity:0.5}
+    100% {top:0;opacity:1}
 }
 
 .animate-from-left{
@@ -339,8 +340,9 @@ text-align: center;
 }
 
 @keyframes animateleft{
-    from{left:-300px;opacity:0} 
-    to{left:0;opacity:1}
+    0% {left:-300px;opacity:0} 
+    50% {left:50px;opacity:0.5}
+    100% {left:0;opacity:1}
 }
 
 .animate-from-right{
@@ -349,8 +351,9 @@ text-align: center;
 }
 
 @keyframes animateright{
-    from{right:-300px;opacity:0} 
-    to{right:0;opacity:1}
+    0% {right:-300px;opacity:0} 
+    50% {right:50px;opacity:0.5}
+    100% {right:0;opacity:1}
 }
 
 @keyframes navinanimate{    
