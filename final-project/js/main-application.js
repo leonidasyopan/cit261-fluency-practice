@@ -312,41 +312,70 @@ function figureMatchday() {
 
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
-    xmlhttp.send();
-    
+    xmlhttp.send();    
 
     var matches_deserialized = JSON.parse(localStorage.getItem('PremierMatches'));
 
     var matchesList = matches_deserialized.matches;
 
-    var output = '';
+    var currentMatchDayString = '';
+    var currentMatchDay = '';
 
     for (var i=0; i < matchesList.length; i++){
         // Current date in YYYY/MM/DD format
-        var utcCurrent = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+        var today = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+        var tomorrow = new Date(new Date().setDate(new Date().getDate() + 1)).toJSON().slice(0,10).replace(/-/g,'/');
+        var twoTomorrow = new Date(new Date().setDate(new Date().getDate() + 2)).toJSON().slice(0,10).replace(/-/g,'/');
+        var threeTomorrow = new Date(new Date().setDate(new Date().getDate() + 3)).toJSON().slice(0,10).replace(/-/g,'/');
+        var fourTomorrow = new Date(new Date().setDate(new Date().getDate() + 4)).toJSON().slice(0,10).replace(/-/g,'/');
+        var fiveTomorrow = new Date(new Date().setDate(new Date().getDate() + 5)).toJSON().slice(0,10).replace(/-/g,'/');
+        var sixTomorrow = new Date(new Date().setDate(new Date().getDate() + 6)).toJSON().slice(0,10).replace(/-/g,'/');
 
         // Date of the Games converted to local
         var utcDate = matchesList[i].utcDate;
         var localDate = new Date(utcDate).toJSON().slice(0,10).replace(/-/g,'/');
-        if (localDate == utcCurrent ) {
-            output += matchesList[i].matchday;
+
+        switch (localDate) {
+            case today:
+                currentMatchDayString += matchesList[i].matchday;
+                break;
+            case tomorrow:
+                currentMatchDayString += matchesList[i].matchday;
+                break;
+            case twoTomorrow:
+                currentMatchDayString += matchesList[i].matchday;
+                break;
+            case threeTomorrow:
+                currentMatchDayString += matchesList[i].matchday;
+                break;
+            case fourTomorrow:
+                currentMatchDayString += matchesList[i].matchday;
+                break;
+            case fiveTomorrow:
+                currentMatchDayString += matchesList[i].matchday;
+                break;
+            case sixTomorrow:
+                currentMatchDayString += matchesList[i].matchday;
+                break;
         }
-        
-        // Current date in YYYY/MM/DD format
-        // var utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
-        // output += '<p>' + utc + '</p>'
+
+        currentMatchDay = currentMatchDayString.substring(0,2);
     }
 
-    document.getElementById("current-matches").innerHTML=output;
+    var headingsMatchday = document.querySelector("#current-matchday");
+
+    headingsMatchday.setAttribute("class", "");
+
+    headingsMatchday.classList.add(currentMatchDay);
+
 }
-
-
 
 /* This funtion is responsible for fecthing the API's information of the Matches. It then creates a table to show the matches for a given week. */ 
 function displayMatches() {
     /* Saving requests*/    
     
-    var url = 'https://api.football-data.org/v2/competitions/2021/matches?matchday=21';
+    var currentMatchDay = document.querySelector("#current-matchday").classList[0];
+    var url = 'https://api.football-data.org/v2/competitions/2021/matches?matchday=' + currentMatchDay;
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
         : new ActiveXObject("Microsoft.XMLHTTP");
@@ -362,15 +391,14 @@ function displayMatches() {
 
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
-    xmlhttp.send();
-    
+    xmlhttp.send();    
 
     var matchday_deserialized = JSON.parse(localStorage.getItem('PremierMatchday'));
 
     var premierMatches = matchday_deserialized; 
 
     var output = ''; 
-    output += '<h2>Matchday 21</h2>'
+    output += '<h2>Matchday ' + currentMatchDay + '</h2>'
     output += '<section>';
 
     var teams_deserialized = JSON.parse(localStorage.getItem('PremierTeams'));
@@ -415,7 +443,7 @@ function displayMatches() {
     output += '</tbody></table>';
     output += '</section>'
 
-    // document.getElementById("current-matches").innerHTML=output;
+    document.getElementById("current-matchday").innerHTML=output;
 }
 
 /* These event listeners are responsible for running the functions when the page first loads */
