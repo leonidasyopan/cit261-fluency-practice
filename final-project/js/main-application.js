@@ -291,11 +291,12 @@ function displayStandings() {
     document.getElementById("premier-standings").innerHTML=output;
 }
 
-/* This funtion is responsible for fecthing the API's information of the Matches. It then creates a table to show the matches for a given week. */ 
-function displayMatches() {
+/* This function figures out which Matchady is the current one  */
+
+function figureMatchday() {
     /* Saving requests*/    
-    
-    var url = 'https://api.football-data.org/v2/competitions/2021/matches?matchday=18';
+
+    var url = 'https://api.football-data.org/v2/competitions/2021/matches';
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
         : new ActiveXObject("Microsoft.XMLHTTP");
@@ -316,10 +317,60 @@ function displayMatches() {
 
     var matches_deserialized = JSON.parse(localStorage.getItem('PremierMatches'));
 
-    var premierMatches = matches_deserialized; 
+    var matchesList = matches_deserialized.matches;
+
+    var output = '';
+
+    for (var i=0; i < matchesList.length; i++){
+        // Current date in YYYY/MM/DD format
+        var utcCurrent = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+
+        // Date of the Games converted to local
+        var utcDate = matchesList[i].utcDate;
+        var localDate = new Date(utcDate).toJSON().slice(0,10).replace(/-/g,'/');
+        if (localDate == utcCurrent ) {
+            output += matchesList[i].matchday;
+        }
+        
+        // Current date in YYYY/MM/DD format
+        // var utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+        // output += '<p>' + utc + '</p>'
+    }
+
+    document.getElementById("current-matches").innerHTML=output;
+}
+
+
+
+/* This funtion is responsible for fecthing the API's information of the Matches. It then creates a table to show the matches for a given week. */ 
+function displayMatches() {
+    /* Saving requests*/    
+    
+    var url = 'https://api.football-data.org/v2/competitions/2021/matches?matchday=21';
+    var xmlhttp = window.XMLHttpRequest
+        ? new XMLHttpRequest()
+        : new ActiveXObject("Microsoft.XMLHTTP");
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var jsondata = JSON.parse(xmlhttp.responseText);
+            var footData  = JSON.stringify(jsondata);    
+
+            localStorage.setItem('PremierMatchday', footData);
+        }
+    }
+
+    xmlhttp.open('GET', url);
+    xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
+    xmlhttp.send();
+    
+
+    var matchday_deserialized = JSON.parse(localStorage.getItem('PremierMatchday'));
+
+    var premierMatches = matchday_deserialized; 
 
     var output = ''; 
-    output += '<h2>Matchday 18</h2>'
+    output += '<h2>Matchday 21</h2>'
     output += '<section>';
 
     var teams_deserialized = JSON.parse(localStorage.getItem('PremierTeams'));
@@ -364,11 +415,12 @@ function displayMatches() {
     output += '</tbody></table>';
     output += '</section>'
 
-    document.getElementById("current-matches").innerHTML=output;
+    // document.getElementById("current-matches").innerHTML=output;
 }
 
 /* These event listeners are responsible for running the functions when the page first loads */
 window.addEventListener('DOMContentLoaded', displayStandings, false);
+window.addEventListener('DOMContentLoaded', figureMatchday, false);
 window.addEventListener('DOMContentLoaded', displayMatches, false);
 window.addEventListener('DOMContentLoaded', getTeamsList, false);
 
