@@ -397,10 +397,6 @@ function displayMatches() {
 
     var premierMatches = matchday_deserialized; 
 
-    var matches_deserialized = JSON.parse(localStorage.getItem('PremierMatches'));
-
-    var matchesList = matches_deserialized.matches;
-
     var output = ''; 
     output += '<h2>Matchday ' + currentMatchDay + '</h2>'
     output += '<section>';
@@ -411,8 +407,7 @@ function displayMatches() {
     
     output += '<table id="table-matches"><thead><tr><th>Date/Time</th><th>Home</th><th></th><th></th><th>X</th><th></th><th></th><th>Away</th></tr></thead><tbody>';
     for (var i=0; i < premierMatches.matches.length; i++){
-        // Convert the time to local time and separate time and day
-        var matchAllId = premierMatches.matches[i].id       
+        // Convert the time to local time and separate time and day               
         var utcDate = premierMatches.matches[i].utcDate;
         var localDate = new Date(utcDate);
         var time = localDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
@@ -426,8 +421,8 @@ function displayMatches() {
         var homeId = premierMatches.matches[i].homeTeam.id;
         var awayURL = '';
         var homeURL = '';
-        var awayScore = '';
-        var homeScore = '';
+        var awayScore = premierMatches.matches[i].score.fullTime.awayTeam;
+        var homeScore = premierMatches.matches[i].score.fullTime.homeTeam;
 
         /* I also felt very good about the trick I created to show the icon/badge of the team of the Match, since this icon was not available in the JSON file of the matches and I didn't want to manually create all the icons for all the Teams. I also knew I already had the information in the JSON file for the Standings, so I just needed to communicate between the two.*/
         for(let i = 0; i < premierTeams.length; i++){
@@ -436,19 +431,7 @@ function displayMatches() {
             } else if (premierTeams[i].id == homeId) {
                 homeURL = premierTeams[i].crestUrl;
             }
-        }
-
-        /* Finding Matches Final Results */
-        for(let i = 0; i < matchesList.length; i++){
-            // if(matchAllId == matchesList[i].id) {
-            if(matchesList[i].id) {
-                awayScore = matchesList[i].score.fullTime.homeTeam;
-                homeScore = matchesList[i].score.fullTime.awayTeam;
-            } else {
-                awayScore = matchesList[i].id;
-                homeScore = matchAllId;
-            }
-        }
+        }        
         
         output += '<tr>';
         output += '<td>' + strDate + ' at ' + time + '</td>';
