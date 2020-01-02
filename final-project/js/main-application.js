@@ -446,6 +446,8 @@ function displayMatches() {
     document.getElementById("current-matchday").innerHTML=output;
 }
 
+
+/* Create a function to allow user to click on badge and redirect to a page with information about the team*/ 
 /* These event listeners are responsible for running the functions when the page first loads */
 window.addEventListener('DOMContentLoaded', displayStandings, false);
 window.addEventListener('DOMContentLoaded', figureMatchday, false);
