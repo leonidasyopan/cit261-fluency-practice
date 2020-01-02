@@ -119,7 +119,7 @@ button:hover{
 
 .figure-matches {    
     width: auto;
-    height: 30px;        
+    height: 15px;        
     text-align: center;
 }
 
@@ -391,5 +391,9 @@ text-align: center;
     main {
         padding: 0 50px;
     }       
+
+    .figure-matches {
+        height: 30px;
+    }
 
 }
