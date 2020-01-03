@@ -330,6 +330,7 @@ function figureMatchday() {
         var fourTomorrow = new Date(new Date().setDate(new Date().getDate() + 4)).toJSON().slice(0,10).replace(/-/g,'/');
         var fiveTomorrow = new Date(new Date().setDate(new Date().getDate() + 5)).toJSON().slice(0,10).replace(/-/g,'/');
         var sixTomorrow = new Date(new Date().setDate(new Date().getDate() + 6)).toJSON().slice(0,10).replace(/-/g,'/');
+        var sevenTomorrow = new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0,10).replace(/-/g,'/');
 
         // Date of the Games converted to local
         var utcDate = matchesList[i].utcDate;
@@ -355,6 +356,9 @@ function figureMatchday() {
                 currentMatchDayString += matchesList[i].matchday;
                 break;
             case sixTomorrow:
+                currentMatchDayString += matchesList[i].matchday;
+                break;
+            case sevenTomorrow:
                 currentMatchDayString += matchesList[i].matchday;
                 break;
         }
@@ -423,6 +427,10 @@ function displayMatches() {
         var homeURL = '';
         var awayScore = premierMatches.matches[i].score.fullTime.awayTeam;
         var homeScore = premierMatches.matches[i].score.fullTime.homeTeam;
+        if (awayScore === null || homeScore === null) {
+            awayScore = " ";
+            homeScore = " ";
+        }
 
         /* I also felt very good about the trick I created to show the icon/badge of the team of the Match, since this icon was not available in the JSON file of the matches and I didn't want to manually create all the icons for all the Teams. I also knew I already had the information in the JSON file for the Standings, so I just needed to communicate between the two.*/
         for(let i = 0; i < premierTeams.length; i++){
