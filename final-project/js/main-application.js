@@ -441,15 +441,19 @@ function displayMatches() {
             }
         }        
         
+        /* Substitute Complete Team name for a short version */
+        var homeTeamName = shortenTeamName(premierMatches.matches[i].homeTeam.name);
+        var awayTeamName = shortenTeamName(premierMatches.matches[i].awayTeam.name);
+
         output += '<tr>';
         output += '<td>' + strDate + ' at ' + time + '</td>';
-        output += '<td>' + premierMatches.matches[i].homeTeam.name + '</td>';
+        output += '<td>' + homeTeamName + '</td>';
         output += '<td><figure class="figure-matches"><img src="' + homeURL + '" alt="' + premierTeams.name + ' Thumb"></figure></td>';
         output += '<td>' + homeScore + '</td>';
         output += '<td> X </td>';
         output += '<td>' + awayScore + '</td>';
         output += '<td><figure class="figure-matches"><img src="' + awayURL + '" alt="' + premierTeams.name + ' Thumb"></figure></td>';            
-        output += '<td>' + premierMatches.matches[i].awayTeam.name + '</td>';     
+        output += '<td>' + awayTeamName + '</td>';     
         output += '</tr>';
     } 
     output += '</tbody></table>';
@@ -472,3 +476,74 @@ const teamInfoDiv = document.querySelector("#team-info");
 
 teamInfoDiv.addEventListener('mouseover', slideShieldOn)
 teamInfoDiv.addEventListener('mouseout', slideShieldOut)
+
+/* Simple function to substitute the long version of a team name for a short one */
+function shortenTeamName(teamName) {
+    var completeTeamName = teamName;
+    var shortTeamName = '';
+
+    switch(completeTeamName) {
+        case 'Liverpool FC':
+            shortTeamName = 'Liverpool';
+            break;
+        case 'Leicester City FC':
+            shortTeamName = 'Leicester';
+            break;
+        case 'Manchester City FC':
+            shortTeamName = 'Manchester City';
+            break;
+        case 'Chelsea FC':
+            shortTeamName = 'LiverChelseapool';
+            break;
+        case 'Manchester United FC':
+            shortTeamName = 'Manchester United';
+            break;
+        case 'Tottenham Hotspur FC':
+            shortTeamName = 'Tottenham Hotspur';
+            break;
+        case 'Wolverhampton Wanderers FC':
+            shortTeamName = 'Wolverhampton';
+            break;
+        case 'Sheffield United FC':
+            shortTeamName = 'Sheffield United';
+            break;
+        case 'Crystal Palace FC':
+            shortTeamName = 'Crystal Palace';
+            break;
+        case 'Arsenal FC':
+            shortTeamName = 'Arsenal';
+            break;
+        case 'Everton FC':
+            shortTeamName = 'Everton';
+            break;
+        case 'Southampton FC':
+            shortTeamName = 'Southampton';
+            break;
+        case 'Newcastle United FC':
+            shortTeamName = 'Newcastle';
+            break;
+        case 'Brighton & Hove Albion FC':
+            shortTeamName = 'Brighton';
+            break;
+        case 'Burnley FC':
+            shortTeamName = 'Burnley';
+            break;
+        case 'West Ham United FC':
+            shortTeamName = 'West Ham';
+            break;
+        case 'Aston Villa FC':
+            shortTeamName = 'Aston Villa';
+            break;
+        case 'AFC Bournemouth':
+            shortTeamName = 'Bournemouth';
+            break;
+        case 'Watford FC':
+            shortTeamName = 'Watford';
+            break;
+        case 'Norwich City FC':
+            shortTeamName = 'Norwich';
+            break;        
+    }
+
+    return shortTeamName;
+}
