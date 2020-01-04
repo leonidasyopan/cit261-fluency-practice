@@ -13,6 +13,7 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active-red";
 }
 
+/* Function for Requesting AJAX */
 function requestApi(apiUrl, localName) {
     /* Saving requests*/    
     var url = apiUrl;
@@ -41,9 +42,7 @@ function getTeamsList(){
     var localName = 'PremierTeams'
     requestApi(url, localName);
 
-    var teams_deserialized = JSON.parse(localStorage.getItem(localName));
-
-    var premierTeams = teams_deserialized.teams;    
+    var premierTeams = JSON.parse(localStorage.getItem(localName)).teams;  
     
     /* Creates a Form Select element to allow choosing the Team to display the information */
     var output = '';
@@ -76,9 +75,7 @@ function getTeamInfo(i){
     var localName = 'PremierTeams'
     requestApi(url, localName);
 
-    var teams_deserialized = JSON.parse(localStorage.getItem('PremierTeams'));
-
-    var premierTeams = teams_deserialized.teams;
+    var premierTeams = JSON.parse(localStorage.getItem(localName)).teams;  
 
     var teamId = premierTeams[i].id;
     
@@ -128,10 +125,8 @@ function runTeamPlayersBeforeShow() {
     var url = 'https://api.football-data.org/v2/teams/' + teamId + '/' ;    
     var localName = 'teamInformation'
     requestApi(url, localName);
-
-    var standings_deserialized = JSON.parse(localStorage.getItem('teamInformation'));
-
-    var teamInfo = standings_deserialized.squad;  
+    
+    var teamInfo = JSON.parse(localStorage.getItem('teamInformation')).squad;
 }
 
 /* This function then creates a table with all of the players of the team */
@@ -142,9 +137,7 @@ function getTeamPlayers(){
     var localName = 'teamInformation'
     requestApi(url, localName);
 
-    var standings_deserialized = JSON.parse(localStorage.getItem('teamInformation'));
-
-    var teamInfo = standings_deserialized.squad;  
+    var teamInfo = JSON.parse(localStorage.getItem('teamInformation')).squad;
 
     /* Create a div to hold all the info of the players of the selected team */
     var output = '';
@@ -240,10 +233,8 @@ function figureMatchday() {
     var url = 'https://api.football-data.org/v2/competitions/2021/matches';
     var localName = 'PremierMatches'
     requestApi(url, localName);
-
-    var matches_deserialized = JSON.parse(localStorage.getItem('PremierMatches'));
-
-    var matchesList = matches_deserialized.matches;
+    
+    var matchesList = JSON.parse(localStorage.getItem('PremierMatches')).matches;
 
     var currentMatchDayString = '';
     var currentMatchDay = '';
@@ -309,9 +300,7 @@ function displayMatches() {
     var localName = 'PremierMatchday'
     requestApi(url, localName);
 
-    var matchday_deserialized = JSON.parse(localStorage.getItem('PremierMatchday'));
-
-    var premierMatches = matchday_deserialized; 
+    var premierMatches = JSON.parse(localStorage.getItem('PremierMatchday')); 
 
     var output = ''; 
     output += '<h2>Matchday ' + currentMatchDay + '</h2>'
