@@ -15,11 +15,32 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active-red";
 }
 
+function requestApi(apiUrl, localName) {
+    /* Saving requests*/    
+    var url = apiUrl;
+    var xmlhttp = window.XMLHttpRequest
+        ? new XMLHttpRequest()
+        : new ActiveXObject("Microsoft.XMLHTTP");
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var jsondata = JSON.parse(xmlhttp.responseText);
+            var footData  = JSON.stringify(jsondata);    
+
+            localStorage.setItem(localName, footData);
+        }
+    }
+
+    xmlhttp.open('GET', url);
+    xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
+    xmlhttp.send();
+}
+
 /* This function is responsible for accessing the API database and creating the list of Teams at the Premier League */
 function getTeamsList(){    
 
     /* Saving requests*/
-    
+    /*
     var url = 'https://api.football-data.org/v2/competitions/2021/teams/';
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
@@ -37,9 +58,13 @@ function getTeamsList(){
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
     xmlhttp.send();
-    
+    */
 
-    var teams_deserialized = JSON.parse(localStorage.getItem('PremierTeams'));
+    var url = 'https://api.football-data.org/v2/competitions/2021/teams/';
+    var localName = 'PremierTeams'
+    requestApi(url, localName);
+
+    var teams_deserialized = JSON.parse(localStorage.getItem(localName));
 
     var premierTeams = teams_deserialized.teams;    
     
@@ -71,7 +96,7 @@ function teamSelect(){
 function getTeamInfo(i){
 
     /* Saving requests*/
-    
+    /*
     var url = 'https://api.football-data.org/v2/competitions/2021/teams/';
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
@@ -89,7 +114,10 @@ function getTeamInfo(i){
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
     xmlhttp.send();
-    
+    */
+    var url = 'https://api.football-data.org/v2/competitions/2021/teams/';
+    var localName = 'PremierTeams'
+    requestApi(url, localName);
 
     var teams_deserialized = JSON.parse(localStorage.getItem('PremierTeams'));
 
@@ -138,7 +166,12 @@ function buttonONbuttonOff() {
 function runTeamPlayersBeforeShow() {
     /* This trick to know witch team should be used to display the players gave a lot of trouble. Because I needed to make the application figure out witch team was being displayerd, since the API was using different JSON files for the team's simple info and for the players */
     var teamId = document.querySelector("#show-squad-table").classList[0];
+    
     var url = 'https://api.football-data.org/v2/teams/' + teamId + '/' ;
+    
+    var localName = 'teamInformation'
+    requestApi(url, localName);
+    /*
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
         : new ActiveXObject("Microsoft.XMLHTTP");
@@ -156,6 +189,7 @@ function runTeamPlayersBeforeShow() {
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
     xmlhttp.send();      
+    */
 
     var standings_deserialized = JSON.parse(localStorage.getItem('teamInformation'));
 
@@ -166,6 +200,10 @@ function runTeamPlayersBeforeShow() {
 function getTeamPlayers(){
     var teamId = document.querySelector("#show-squad-table").classList[0];
     var url = 'https://api.football-data.org/v2/teams/' + teamId + '/' ;
+
+    var localName = 'teamInformation'
+    requestApi(url, localName);
+    /*
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
         : new ActiveXObject("Microsoft.XMLHTTP");
@@ -183,6 +221,7 @@ function getTeamPlayers(){
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
     xmlhttp.send();      
+    */
 
     var standings_deserialized = JSON.parse(localStorage.getItem('teamInformation'));
 
@@ -245,6 +284,10 @@ function displayStandings() {
     /* Saving requests*/    
     
     var url = 'https://api.football-data.org/v2/competitions/2021/standings/';
+    var localName = 'PremierStandings'
+    requestApi(url, localName);
+    
+    /*
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
         : new ActiveXObject("Microsoft.XMLHTTP");
@@ -261,7 +304,7 @@ function displayStandings() {
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
     xmlhttp.send();
-    
+    */
 
     var standings_deserialized = JSON.parse(localStorage.getItem('PremierStandings'));
 
@@ -297,6 +340,9 @@ function figureMatchday() {
     /* Saving requests*/    
 
     var url = 'https://api.football-data.org/v2/competitions/2021/matches';
+    var localName = 'PremierMatches'
+    requestApi(url, localName);
+    /*
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
         : new ActiveXObject("Microsoft.XMLHTTP");
@@ -313,6 +359,7 @@ function figureMatchday() {
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
     xmlhttp.send();    
+    */
 
     var matches_deserialized = JSON.parse(localStorage.getItem('PremierMatches'));
 
@@ -380,6 +427,10 @@ function displayMatches() {
     
     var currentMatchDay = document.querySelector("#current-matchday").classList[0];
     var url = 'https://api.football-data.org/v2/competitions/2021/matches?matchday=' + currentMatchDay;
+    var localName = 'PremierMatchday'
+    requestApi(url, localName);
+
+    /*
     var xmlhttp = window.XMLHttpRequest
         ? new XMLHttpRequest()
         : new ActiveXObject("Microsoft.XMLHTTP");
@@ -396,6 +447,7 @@ function displayMatches() {
     xmlhttp.open('GET', url);
     xmlhttp.setRequestHeader("X-Auth-Token", "383412449bc94f34bccb709be3b40dd3");
     xmlhttp.send();    
+    */
 
     var matchday_deserialized = JSON.parse(localStorage.getItem('PremierMatchday'));
 
