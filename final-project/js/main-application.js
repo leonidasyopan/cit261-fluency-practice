@@ -187,8 +187,7 @@ function slideShieldOut() {
     teamDataDiv.classList.remove("animate-team-data");    
     teamDataDiv.style.marginLeft = "-300px";
     teamDataDiv.style.opacity = "0";
-    teamDataDiv.style.transition = "all 2s";
-    
+    teamDataDiv.style.transition = "all 2s";    
 }
 
 /* This funtion is responsible for fecthing the API's information of the Standings. It then creates a table to show the stadings. */ 
