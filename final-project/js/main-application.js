@@ -156,12 +156,10 @@ function getTeamPlayers(){
         var playerNationality = teamInfo[i].nationality;
         var playerNationalityURL = playerNationality.replace(/\s+/g, '-').toLowerCase();
 
-        output += '<tr>';
-        output += '<td>' + teamInfo[i].name + '</td>';
+        output += '<tr><td>' + teamInfo[i].name + '</td>';
         output += '<td>' + teamInfo[i].position + '</td>';
         output += '<td>' + '<figure class="player-nationality-image"><img src="img/country-flags/' + playerNationalityURL + '.svg" alt="' + playerNationality + '"></figure>'; + '</td>';
-        output += '<td>' + playerShirt + '</td>';
-        output += '</tr>';
+        output += '<td>' + playerShirt + '</td></tr>';
     }    
     output += '</tbody></table>';
 
@@ -206,8 +204,7 @@ function displayStandings() {
     output += '<section>';
     output += '<table id="table-standings"><thead><tr><th>#</th><th></th><th>Club</th><th> P </th><th> W </th><th> D </th><th> L </th><th>Pts</th><th>GD</th></tr></thead><tbody>';
     for (var i=0; i < premierStandings.length; i++){
-        output += '<tr>';
-        output += '<td>' + premierStandings[i].position + '</td>';
+        output += '<tr><td>' + premierStandings[i].position + '</td>';
         output += '<td><figure class="figure-standings"><img src="' + premierStandings[i].team.crestUrl + '" alt="' + premierStandings[i].team.name + ' Thumb"></figure></td>';
         output += '<td>' + premierStandings[i].team.name +  '</td>';
         output += '<td>' + premierStandings[i].playedGames + '</td>';
@@ -215,8 +212,7 @@ function displayStandings() {
         output += '<td>' + premierStandings[i].draw + '</td>';
         output += '<td>' + premierStandings[i].lost + '</td>';
         output += '<td>' + premierStandings[i].points + '</td>';
-        output += '<td>' + premierStandings[i].goalDifference + '</td>';
-        output += '</tr>';
+        output += '<td>' + premierStandings[i].goalDifference + '</td></tr>';
     }    
     output += '</tbody></table>';
     output += '<p id="legends"><strong>P</strong> = Played, <strong>W</strong> = Won, <strong>D</strong> = Draw, <strong>L</strong> = Lost, <strong>Pts</strong> = Points</p>';
@@ -345,16 +341,14 @@ function displayMatches() {
         var homeTeamName = shortenTeamName(premierMatches.matches[i].homeTeam.name);
         var awayTeamName = shortenTeamName(premierMatches.matches[i].awayTeam.name);
 
-        output += '<tr>';
-        output += '<td>' + strDate + ' at ' + time + '</td>';
+        output += '<tr><td>' + strDate + ' at ' + time + '</td>';
         output += '<td>' + homeTeamName + '</td>';
         output += '<td><figure class="figure-matches"><img src="' + homeURL + '" alt="' + premierTeams.name + ' Thumb"></figure></td>';
         output += '<td>' + homeScore + '</td>';
         output += '<td> X </td>';
         output += '<td>' + awayScore + '</td>';
         output += '<td><figure class="figure-matches"><img src="' + awayURL + '" alt="' + premierTeams.name + ' Thumb"></figure></td>';            
-        output += '<td>' + awayTeamName + '</td>';     
-        output += '</tr>';
+        output += '<td>' + awayTeamName + '</td></tr>';
     } 
     output += '</tbody></table>';
     output += '</section>'
